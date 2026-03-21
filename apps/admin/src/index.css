@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+@source "../../../modules";
+@source "../../../packages";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-primary-subtle: #ccfbf1;
+  --color-primary-foreground: #ffffff;
+
+  --color-canvas: #f8fafc;
+  --color-surface: #ffffff;
+  --color-overlay: #f1f5f9;
+
+  --color-aside: #ffffff;
+  --color-aside-border: #e2e8f0;
+
+  --color-header: #ffffff;
+  --color-header-border: #e2e8f0;
+
+  /* Text */
+  --color-ink: #0f172a;
+  --color-ink-muted: #64748b;
+  --color-ink-faint: #94a3b8;
+
+  /* Border */
+  --color-edge: #e2e8f0;
+  --color-edge-hover: #cbd5e1;
+
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
+}
+
+@layer base {
+  .dark {
+    --color-primary: #14b8a6;
+    --color-primary-hover: #0d9488;
+    --color-primary-subtle: #042f2e;
+    --color-primary-foreground: #ffffff;
+
+    --color-canvas: #0f172a;
+    --color-surface: #1e293b;
+    --color-overlay: #273548;
+
+    --color-aside: #1e293b;
+    --color-aside-border: #334155;
+
+    --color-header: #1e293b;
+    --color-header-border: #334155;
+
+    --color-ink: #f1f5f9;
+    --color-ink-muted: #94a3b8;
+    --color-ink-faint: #64748b;
+
+    --color-edge: #334155;
+    --color-edge-hover: #475569;
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
