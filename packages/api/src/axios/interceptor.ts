@@ -3,9 +3,9 @@ import axios, {
   type AxiosResponse,
   type AxiosError,
 } from 'axios';
-import { type AxiosInterceptors } from './api.provider';
-import type { RefreshTokenDTO } from '@/infrastructure/dto';
-import { BrowserStorage, STORAGE_KEYS } from '@/infrastructure/sources/storage';
+import { type AxiosInterceptors } from './provider';
+import { getApiConfig } from './config';
+import type { RefreshTokenResponse } from '../dto';
 
 declare module 'axios' {
   export interface InternalAxiosRequestConfig {
@@ -15,7 +15,7 @@ declare module 'axios' {
 
 export const mainInterceptors: AxiosInterceptors = {
   onRequest: (config: InternalAxiosRequestConfig) => {
-    const token = BrowserStorage.get<string>(STORAGE_KEYS.ACCESS_TOKEN);
+    const token = localStorage.getItem('access_token');
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -34,19 +34,13 @@ export const mainInterceptors: AxiosInterceptors = {
       originalRequest._retry = true;
 
       try {
-        const refreshToken = BrowserStorage.get<string>(
-          STORAGE_KEYS.REFRESH_TOKEN
+        const baseURL = getApiConfig().baseURL;
+        const { data } = await axios.post<RefreshTokenResponse>(
+          `${baseURL}/auth/refresh`
         );
 
-        const { data } = await axios.post<RefreshTokenDTO>(
-          `${import.meta.env.VITE_API_URL}/auth/refresh`,
-          { refresh_token: refreshToken }
-        );
-
-        BrowserStorage.set<string>(
-          STORAGE_KEYS.ACCESS_TOKEN,
-          data.access_token
-        );
+        const serializedValue = JSON.stringify(data.access_token);
+        localStorage.setItem('access_token', serializedValue);
 
         if (originalRequest.headers) {
           originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
@@ -55,7 +49,7 @@ export const mainInterceptors: AxiosInterceptors = {
         return axios(originalRequest);
       } catch (refreshError) {
         localStorage.clear();
-        window.location.href = '/login';
+        window.location.href = '/';
         return Promise.reject(refreshError);
       }
     }

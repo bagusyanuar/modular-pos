@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "exports": {
-    "./client": "./src/client/index.ts",
+    "./axios": "./src/axios/index.ts",
     "./error": "./src/error/index.ts"
   },
   "scripts": {
