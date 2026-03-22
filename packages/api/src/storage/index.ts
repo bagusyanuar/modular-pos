@@ -1,4 +1,4 @@
-const ACCESS_TOKEN_KEY = 'simrs_access_token';
+const ACCESS_TOKEN_KEY = 'pos_access_token';
 
 export const tokenStorage = {
   getAccessToken: (): string | null => {
