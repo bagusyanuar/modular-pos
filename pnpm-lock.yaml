@@ -164,6 +164,34 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1(@types/node@24.12.0)(jiti@2.6.1)
 
+  modules/auth:
+    dependencies:
+      '@genpos/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@genpos/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.4(react@19.2.4)
+      react-router-dom:
+        specifier: ^7.13.1
+        version: 7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   packages/api:
     dependencies:
       '@genpos/core':

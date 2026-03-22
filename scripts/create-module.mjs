@@ -52,7 +52,7 @@ writeFileSync(
       },
       dependencies: {
         '@genpos/core': 'workspace:*',
-        '@genpos/api-client': 'workspace:*',
+        '@genpos/api': 'workspace:*',
       },
       peerDependencies: {
         react: '^19.2.4',

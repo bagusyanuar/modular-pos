@@ -1,3 +1,5 @@
+import type { AxiosInstance } from 'axios';
+
 export interface ApiConfig {
   baseURL: string;
   timeout?: number;
@@ -12,6 +14,13 @@ export interface ApiErrorResponse {
   message: string;
   code: string;
   errors?: Record<string, string[]>;
+}
+
+export type { AxiosInstance as ApiClient } from 'axios';
+
+export interface ModuleBootstrap {
+  name: string;
+  init(api: AxiosInstance): void;
 }
 
 // Extend AxiosRequestConfig untuk menyimpan flag retry
