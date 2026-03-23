@@ -15,19 +15,13 @@ const folders = [
   'src/core/models',
   'src/core/repositories',
   'src/core/use-cases',
-  'src/core/commands',
-  'src/core/queries',
   // infrastructure
   'src/infrastructure/mappers',
   'src/infrastructure/repositories',
   'src/infrastructure/providers',
-  'src/infrastructure/commands',
-  'src/infrastructure/queries',
   // presentation
   'src/presentation/hooks',
-  'src/presentation/pages',
   'src/presentation/components',
-  'src/presentation/routes',
 ];
 
 // Buat folders
@@ -43,9 +37,7 @@ writeFileSync(
       type: 'module',
       exports: {
         './hooks': './src/presentation/hooks/index.ts',
-        './pages': './src/presentation/pages/index.ts',
         './components': './src/presentation/components/index.ts',
-        './routes': './src/presentation/routes/index.ts',
       },
       scripts: {
         typecheck: 'tsc --noEmit',
@@ -93,19 +85,13 @@ const indexes = [
   'src/core/models/index.ts',
   'src/core/repositories/index.ts',
   'src/core/use-cases/index.ts',
-  'src/core/commands/index.ts',
-  'src/core/queries/index.ts',
   // infrastructure
   'src/infrastructure/mappers/index.ts',
   'src/infrastructure/repositories/index.ts',
   'src/infrastructure/providers/index.ts',
-  'src/infrastructure/commands/index.ts',
-  'src/infrastructure/queries/index.ts',
   // presentation
   'src/presentation/hooks/index.ts',
-  'src/presentation/pages/index.ts',
   'src/presentation/components/index.ts',
-  'src/presentation/routes/index.ts',
 ];
 
 indexes.forEach((f) => writeFileSync(join(base, f), '// export di sini\n'));
