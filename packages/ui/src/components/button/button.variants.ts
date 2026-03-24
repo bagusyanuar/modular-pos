@@ -12,6 +12,12 @@ export const buttonVariants = cva(
         ghost: 'bg-transparent text-neutral-700 hover:bg-stone-50',
         secondary: 'bg-gray-500 text-white hover:bg-gray-600',
       },
+      loading: {
+        true: 'cursor-not-allowed bg-orange-600 border-orange-600',
+      },
+      disabled: {
+        true: 'cursor-not-allowed text-neutral-500 bg-stone-200 border-stone-200 hover:bg-stone-200 hover:border-stone-200',
+      },
     },
     defaultVariants: {
       variant: 'primary',

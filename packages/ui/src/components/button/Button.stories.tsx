@@ -5,10 +5,33 @@ import Button from './Button';
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'outline', 'ghost', 'link'],
+      options: ['primary', 'outline', 'ghost'],
+      description: 'The visual style of the button',
+      table: {
+        type: { summary: "'primary' | 'outline' | 'ghost'" },
+      },
+    },
+    className: {
+      control: { type: 'text' },
+      description: 'Additional CSS classes to apply to the button',
+    },
+    prefixIcon: {
+      options: ['FaPlus', 'None'],
+      mapping: { FaPlus: FaPlus, None: undefined },
+      control: { type: 'select' },
+      description:
+        'Icon to display before the button text, using the react-icons component library',
+    },
+    suffixIcon: {
+      options: ['FaPlus', 'None'],
+      mapping: { FaPlus: FaPlus, None: undefined },
+      control: { type: 'select' },
+      description:
+        'Icon to display after the button text, using the react-icons component library',
     },
   },
 };
@@ -43,6 +66,22 @@ export const WithPrefixIcon: Story = {
     variant: 'primary',
     prefixIcon: FaPlus,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Button with a prefix icon using `react-icons`.',
+      },
+      source: {
+        code: `import { FaPlus } from 'react-icons/fa';
+
+<Button
+  prefixIcon={FaPlus}
+  text="Button with Icon"
+  variant="primary"
+/>`,
+      },
+    },
+  },
 };
 
 export const WithSuffixIcon: Story = {
@@ -51,11 +90,43 @@ export const WithSuffixIcon: Story = {
     variant: 'primary',
     suffixIcon: FaPlus,
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `import { FaPlus } from 'react-icons/fa';
+import Button from './Button';
+
+<Button
+  suffixIcon={FaPlus}
+  text="Button with Icon"
+  variant="primary"
+/>`,
+      },
+    },
+  },
 };
 
-// export const Link: Story = {
-//   args: {
-//     text: 'Link Button',
-//     variant: 'link',
-//   },
-// };
+export const Loading: Story = {
+  args: {
+    text: 'Loading Button',
+    variant: 'primary',
+    loading: true,
+    loadingText: 'processing...',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    text: 'Disabled Button',
+    variant: 'primary',
+    disabled: true,
+  },
+};
+
+export const Clicked: Story = {
+  args: {
+    text: 'Click Me',
+    variant: 'primary',
+    onClick: () => alert('button clicked'),
+  },
+};
