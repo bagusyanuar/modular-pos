@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .turbo
+
+*storybook.log
+storybook-static
