@@ -1,32 +1,40 @@
-import React from 'react';
+import React, { useState, type HTMLInputTypeAttribute } from 'react';
 import {
   containerVariants,
   inputVariants,
   iconContainerVariants,
-} from './textfield.variants';
+} from './passwordfield.variants';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 import type { IconType } from 'react-icons';
+import { LuEye, LuEyeOff } from 'react-icons/lu';
 
 type ContainerVariants = VariantProps<typeof containerVariants>;
 
-interface TextfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface PasswordfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   isError?: ContainerVariants['isError'];
+  disabled?: boolean;
   prefixIcon?: IconType;
-  suffixIcon?: IconType;
 }
-const Textfield = React.forwardRef<HTMLInputElement, TextfieldProps>(
+const Passwordfield = React.forwardRef<HTMLInputElement, PasswordfieldProps>(
   (
     {
       className,
       isError = false,
+      disabled = false,
       prefixIcon: PrefixIcon,
-      suffixIcon: SuffixIcon,
       ...props
     },
     ref
   ) => {
+    const [type, setType] = useState<HTMLInputTypeAttribute>('password');
+
+    const handleChangeType = () => {
+      if (!disabled) {
+        setType((prev) => (prev === 'password' ? 'text' : 'password'));
+      }
+    };
     return (
       <div
         className={cn(
@@ -37,13 +45,7 @@ const Textfield = React.forwardRef<HTMLInputElement, TextfieldProps>(
         )}
       >
         {PrefixIcon && (
-          <div
-            className={cn(
-              iconContainerVariants({
-                type: 'prefix',
-              })
-            )}
-          >
+          <div className={cn(iconContainerVariants())}>
             <PrefixIcon size={14} />
           </div>
         )}
@@ -53,25 +55,17 @@ const Textfield = React.forwardRef<HTMLInputElement, TextfieldProps>(
             inputVariants({
               isError: isError,
               hasPrefixIcon: !!PrefixIcon,
-              hasSuffixIcon: !!SuffixIcon,
             })
           )}
+          type={type}
           {...props}
         />
-        {SuffixIcon && (
-          <div
-            className={cn(
-              iconContainerVariants({
-                type: 'suffix',
-              })
-            )}
-          >
-            <SuffixIcon size={14} />
-          </div>
-        )}
+        <div className={cn(iconContainerVariants())} onClick={handleChangeType}>
+          {type === 'password' ? <LuEye size={14} /> : <LuEyeOff size={14} />}
+        </div>
       </div>
     );
   }
 );
 
-export default Textfield;
+export default Passwordfield;
