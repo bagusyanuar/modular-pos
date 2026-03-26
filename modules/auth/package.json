@@ -4,7 +4,8 @@
   "type": "module",
   "exports": {
     "./hooks": "./src/presentation/hooks/index.ts",
-    "./components": "./src/presentation/components/index.ts"
+    "./components": "./src/presentation/components/index.ts",
+    "./pages": "./src/presentation/pages/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
