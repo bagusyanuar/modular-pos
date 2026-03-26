@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LoginPage = () => {
-  return <div>Coba LoginPage</div>;
+  return <div>Coba lagi LoginPage</div>;
 };
 
 export default LoginPage;

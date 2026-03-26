@@ -16,4 +16,7 @@ export default defineConfig({
       template: 'treemap',
     }),
   ],
+  resolve: {
+    dedupe: ['react', 'react-dom', 'react-router-dom'],
+  },
 });
