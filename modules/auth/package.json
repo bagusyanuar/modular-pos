@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@genpos/core": "workspace:*",
-    "@genpos/api": "workspace:*"
+    "@genpos/api": "workspace:*",
+    "@genpos/ui": "workspace:*"
   },
   "peerDependencies": {
     "react": "^19.2.4",

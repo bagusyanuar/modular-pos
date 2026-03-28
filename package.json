@@ -7,6 +7,9 @@
   "type": "module",
   "scripts": {
     "dev": "turbo run dev",
+    "dev:admin": "turbo run dev --filter=@genpos/admin",
+    "storybook": "pnpm run --filter=@genpos/ui storybook",
+    "build-storybook": "pnpm run --filter=@genpos/ui build-storybook",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",

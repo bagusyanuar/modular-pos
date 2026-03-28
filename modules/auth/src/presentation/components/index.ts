@@ -1,1 +1,1 @@
-// export di sini
+export * from './login';

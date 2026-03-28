@@ -175,6 +175,9 @@ importers:
       '@genpos/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@genpos/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       react:
         specifier: ^19.2.4
         version: 19.2.4

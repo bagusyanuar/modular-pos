@@ -19,4 +19,9 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom', 'react-router-dom'],
   },
+  server: {
+    watch: {
+      ignored: ['!../../modules/**', '!../../packages/**'],
+    },
+  },
 });
