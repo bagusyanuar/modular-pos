@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FaPlus } from 'react-icons/fa';
-import Button from './Button';
+import GButton from './GButton';
 
-const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
-  component: Button,
+const meta: Meta<typeof GButton> = {
+  title: 'Components/GButton',
+  component: GButton,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -37,7 +37,7 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof GButton>;
 
 export const Primary: Story = {
   args: {
@@ -94,7 +94,6 @@ export const WithSuffixIcon: Story = {
     docs: {
       source: {
         code: `import { FaPlus } from 'react-icons/fa';
-import Button from './Button';
 
 <Button
   suffixIcon={FaPlus}

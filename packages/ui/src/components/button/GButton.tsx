@@ -1,12 +1,12 @@
 import React from 'react';
 import type { IconType } from 'react-icons';
-import { buttonVariants } from './button.variants';
+import { buttonVariants } from './gbutton.variants';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-interface ButtonProps {
+interface GButtonProps {
   text: string;
   className?: string;
   variant?: ButtonVariants['variant'];
@@ -18,7 +18,7 @@ interface ButtonProps {
   loadingText?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const GButton: React.FC<GButtonProps> = ({
   text,
   variant = 'primary',
   prefixIcon: PrefixIcon,
@@ -73,4 +73,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default GButton;
