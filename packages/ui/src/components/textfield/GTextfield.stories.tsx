@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LuMail } from 'react-icons/lu';
-import Textfield from './Textfield';
+import GTextfield from './GTextfield';
 
-const meta: Meta<typeof Textfield> = {
-  title: 'Components/Textfield',
-  component: Textfield,
+const meta: Meta<typeof GTextfield> = {
+  title: 'Components/GTextfield',
+  component: GTextfield,
   parameters: {
     layout: 'centered',
   },
@@ -21,7 +21,7 @@ const meta: Meta<typeof Textfield> = {
       control: 'boolean',
     },
   },
-} satisfies Meta<typeof Textfield>;
+} satisfies Meta<typeof GTextfield>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -57,9 +57,9 @@ export const WithPrefixIcon: Story = {
     docs: {
       source: {
         code: `import { LuMail } from 'react-icons/lu';
-import { Textfield } from '@genpos/ui/textfield';
+import { GTextfield } from '@genpos/ui/textfield';
 
-<Textfield 
+<GTextfield 
   placeholder="Email address..." 
   prefixIcon={LuMail} 
 />`,
@@ -77,9 +77,9 @@ export const WithSuffixIcon: Story = {
     docs: {
       source: {
         code: `import { LuMail } from 'react-icons/lu';
-import { Textfield } from '@genpos/ui/textfield';
+import { GTextfield } from '@genpos/ui/textfield';
 
-<Textfield 
+<GTextfield 
   placeholder="Search something..." 
   suffixIcon={LuMail} 
 />`,
@@ -98,9 +98,9 @@ export const WithBothIcons: Story = {
     docs: {
       source: {
         code: `import { LuMail } from 'react-icons/lu';
-import { Textfield } from '@genpos/ui/textfield';
+import { GTextfield } from '@genpos/ui/textfield';
 
-<Textfield 
+<GTextfield 
   placeholder="Email address..." 
   prefixIcon={LuMail} 
   suffixIcon={LuMail} 

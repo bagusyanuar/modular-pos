@@ -3,20 +3,20 @@ import {
   containerVariants,
   inputVariants,
   iconContainerVariants,
-} from './textfield.variants';
+} from './gtextfield.variants';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 import type { IconType } from 'react-icons';
 
 type ContainerVariants = VariantProps<typeof containerVariants>;
 
-interface TextfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface GTextfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   isError?: ContainerVariants['isError'];
   prefixIcon?: IconType;
   suffixIcon?: IconType;
 }
-const Textfield = React.forwardRef<HTMLInputElement, TextfieldProps>(
+const GTextfield = React.forwardRef<HTMLInputElement, GTextfieldProps>(
   (
     {
       className,
@@ -74,4 +74,4 @@ const Textfield = React.forwardRef<HTMLInputElement, TextfieldProps>(
   }
 );
 
-export default Textfield;
+export default GTextfield;
