@@ -8,6 +8,7 @@ import {
   containerVariants,
   inputVariants,
   iconContainerVariants,
+  dropdownIndicatorVariants,
 } from './gselect.variants';
 import { cn } from '../../utils';
 import { LuChevronDown, LuX } from 'react-icons/lu';
@@ -27,6 +28,8 @@ const GSelect = <OptionType,>({
   className,
   prefixIcon: PrefixIcon,
   isError = false,
+  isClearable,
+  isSearchable,
   ...props
 }: SelectProps<OptionType>) => {
   return (
@@ -45,6 +48,8 @@ const GSelect = <OptionType,>({
       )}
       <Select<OptionType, false, GroupBase<OptionType>>
         {...props}
+        isClearable={!!isClearable}
+        isSearchable={!!isSearchable}
         components={{
           DropdownIndicator: (props) => (
             <components.DropdownIndicator {...props}>
@@ -56,23 +61,45 @@ const GSelect = <OptionType,>({
           ),
           ClearIndicator: (props) => (
             <components.ClearIndicator {...props}>
-              <LuX size={14} className="text-inherit cursor-pointer" />
+              <LuX size={12} className="text-inherit cursor-pointer" />
             </components.ClearIndicator>
           ),
         }}
         classNames={{
-          container: ({ isFocused }) => twMerge('w-full !border-none'),
+          container: () => twMerge('w-full !border-none !cursor-pointer'),
           control: ({ isFocused }) =>
             twMerge(
-              '!border-none !rounded-lg !h-fit !min-h-fit !py-0 !px-0 !text-xs',
+              '!border-none !shadow-none !rounded-lg !h-fit !min-h-fit !py-0 !px-0 !text-xs',
               isFocused && '!ring-0 shadow-none !rounded-lg border-orange-500'
             ),
           placeholder: () => twMerge('text-gray-400 text-xs !p-0 !m-0'),
           valueContainer: () =>
-            cn(inputVariants({ hasPrefixIcon: !!PrefixIcon })),
-          dropdownIndicator: () => twMerge('!p-0 !h-fit'),
-          menu: () => twMerge('!rounded-lg !mt-1 !shadow-md !border !border-gray-100'),
+            cn(
+              inputVariants({
+                hasPrefixIcon: !!PrefixIcon,
+                isSearchable: !!isSearchable,
+              })
+            ),
+          dropdownIndicator: () =>
+            cn(
+              dropdownIndicatorVariants({
+                hasClearIndicator: !!isClearable,
+              })
+            ),
+          clearIndicator: () => twMerge('!ps-2.5 !pe-2.5 !h-fit'),
+          menu: () =>
+            twMerge(
+              '!rounded-lg !mt-1 !shadow-md !border !border-gray-300 !left-0 !px-1.5 !py-1'
+            ),
           input: () => twMerge('!p-0 !m-0 !text-xs'),
+          option: ({ isSelected, isFocused }) =>
+            twMerge(
+              '!cursor-pointer !text-xs !rounded-md transition-colors duration-300 ease-in-out',
+              isSelected && '!bg-orange-500 !text-white',
+              !isSelected && isFocused && '!bg-orange-100 !text-neutral-700',
+              !isSelected && !isFocused && '!text-neutral-700'
+            ),
+          noOptionsMessage: () => twMerge('!text-xs !text-gray-400'),
         }}
         styles={{
           container: (provided) => ({
