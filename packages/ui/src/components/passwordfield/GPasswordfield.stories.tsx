@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LuLock } from 'react-icons/lu';
-import Passwordfield from './Passwordfield';
+import GPasswordfield from './GPasswordfield';
 
-const meta: Meta<typeof Passwordfield> = {
-  title: 'Components/Passwordfield',
-  component: Passwordfield,
+const meta: Meta<typeof GPasswordfield> = {
+  title: 'Components/GPasswordfield',
+  component: GPasswordfield,
   parameters: {
     layout: 'centered',
   },
@@ -21,7 +21,7 @@ const meta: Meta<typeof Passwordfield> = {
       control: 'boolean',
     },
   },
-} satisfies Meta<typeof Passwordfield>;
+} satisfies Meta<typeof GPasswordfield>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -57,9 +57,9 @@ export const WithPrefixIcon: Story = {
     docs: {
       source: {
         code: `import { LuLock } from 'react-icons/lu';
-import { Passwordfield } from '@genpos/ui/passwordfield';
+import { GPasswordfield } from '@genpos/ui/passwordfield';
 
-<Passwordfield 
+<GPasswordfield 
   placeholder="Password..." 
   prefixIcon={LuLock} 
 />`,

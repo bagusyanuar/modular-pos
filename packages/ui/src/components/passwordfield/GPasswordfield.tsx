@@ -3,7 +3,7 @@ import {
   containerVariants,
   inputVariants,
   iconContainerVariants,
-} from './passwordfield.variants';
+} from './gpasswordfield.variants';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 import type { IconType } from 'react-icons';
@@ -11,13 +11,13 @@ import { LuEye, LuEyeOff } from 'react-icons/lu';
 
 type ContainerVariants = VariantProps<typeof containerVariants>;
 
-interface PasswordfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface GPasswordfieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   isError?: ContainerVariants['isError'];
   disabled?: boolean;
   prefixIcon?: IconType;
 }
-const Passwordfield = React.forwardRef<HTMLInputElement, PasswordfieldProps>(
+const GPasswordfield = React.forwardRef<HTMLInputElement, GPasswordfieldProps>(
   (
     {
       className,
@@ -68,4 +68,4 @@ const Passwordfield = React.forwardRef<HTMLInputElement, PasswordfieldProps>(
   }
 );
 
-export default Passwordfield;
+export default GPasswordfield;
