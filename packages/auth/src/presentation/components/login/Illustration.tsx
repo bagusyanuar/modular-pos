@@ -1,7 +1,7 @@
 import React from 'react';
 
-const IllustrationPanel = () => {
+const Illustration = () => {
   return <div className="bg-orange-500 w-full h-full"></div>;
 };
 
-export default IllustrationPanel;
+export default Illustration;

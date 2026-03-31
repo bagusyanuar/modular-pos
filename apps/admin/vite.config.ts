@@ -20,6 +20,7 @@ export default defineConfig({
     dedupe: ['react', 'react-dom', 'react-router-dom'],
   },
   server: {
+    port: 3001,
     watch: {
       ignored: ['!../../modules/**', '!../../packages/**'],
     },
