@@ -29,12 +29,12 @@ const GCheckbox = forwardRef<HTMLInputElement, IProps>(
         >
           <svg
             className="
-                            w-3.5 h-3.5
-                            text-white
-                            opacity-0
-                            transition-all duration-150
-                            peer-checked:[&_svg]:opacity-100
-                        "
+                w-3.5 h-3.5
+                text-white
+                opacity-0
+                transition-all duration-150
+                peer-checked:[&_svg]:opacity-100
+            "
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
