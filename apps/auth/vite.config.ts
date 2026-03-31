@@ -1,11 +1,28 @@
-import { defineConfig } from 'vite'
-import react, { reactCompilerPreset } from '@vitejs/plugin-react'
-import babel from '@rolldown/plugin-babel'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import tailwindcss from '@tailwindcss/vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    babel({ presets: [reactCompilerPreset()] })
+    tailwindcss(),
+    visualizer({
+      open: true, // otomatis buka browser setelah build
+      gzipSize: true, // tampilkan ukuran setelah gzip
+      brotliSize: true, // tampilkan ukuran setelah brotli
+      filename: 'dist/stats.html',
+      template: 'treemap',
+    }),
   ],
-})
+  resolve: {
+    dedupe: ['react', 'react-dom', 'react-router-dom'],
+  },
+  server: {
+    port: 3000,
+    watch: {
+      ignored: ['!../../modules/**', '!../../packages/**'],
+    },
+  },
+});
