@@ -3,24 +3,28 @@ import type { VariantProps } from 'class-variance-authority';
 import { tooltipVariants } from './gtooltip.variants';
 import { cn } from '../../utils';
 
-interface GTooltipProps extends VariantProps<typeof tooltipVariants> {
-  content: string;
+export interface GTooltipProps extends VariantProps<typeof tooltipVariants> {
+  content: React.ReactNode;
   children: React.ReactNode;
   className?: string;
+  delay?: number; // Added for future use, mapping to CSS transition-delay if needed
 }
 
 const GTooltip: React.FC<GTooltipProps> = ({
   content,
   children,
-  position = 'right',
+  position = 'top',
   className,
 }) => {
   return (
-    <div className="group relative inline-flex items-center">
+    <div className="group relative inline-flex items-center justify-center">
       {children}
-      <span className={cn(tooltipVariants({ position }), className)}>
+      <div 
+        role="tooltip"
+        className={cn(tooltipVariants({ position }), className)}
+      >
         {content}
-      </span>
+      </div>
     </div>
   );
 };
