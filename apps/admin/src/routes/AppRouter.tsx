@@ -1,20 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { APP_PATHS } from './paths';
+
+
+import AppLayout from '../layouts/AppLayout';
 
 const AppRouter = createBrowserRouter([
   {
-    path: APP_PATHS.HOME,
-    lazy: async () => {
-      const { LoginPage } = await import('@genpos/auth/pages');
-      return { Component: LoginPage };
-    },
-  },
-  {
-    path: APP_PATHS.FORGOT_PASSWORD,
-    lazy: async () => {
-      const { ForgotPasswordPage } = await import('@genpos/auth/pages');
-      return { Component: ForgotPasswordPage };
-    },
+    path: '/',
+    element: <AppLayout />,
+    children: [
+      {
+        path: '/dashboard',
+        element: <div />, // Placeholder untuk sementara
+      },
+    ],
   },
 ]);
 

@@ -6,7 +6,8 @@
   "license": "MIT",
   "exports": {
     "./*": "./src/components/*/index.ts",
-    "./context/*": "./src/context/*/index.ts"
+    "./context/*": "./src/context/*/index.ts",
+    "./icons": "./src/icons/index.ts"
   },
   "files": [
     "dist"

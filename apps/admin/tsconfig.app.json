@@ -10,7 +10,10 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@genpos/ui/*": ["../../packages/ui/src/components/*/index.ts"]
+      "@genpos/ui/*": ["../../packages/ui/src/components/*/index.ts"],
+      "@genpos/ui/context/*": ["../../packages/ui/src/context/*/index.ts"],
+      "@genpos/ui/icons": ["../../packages/ui/src/icons/index.ts"],
+      "@genpos/auth/*": ["../../packages/auth/src/presentation/*/index.ts"]
     },
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
