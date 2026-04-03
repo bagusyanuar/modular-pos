@@ -65,6 +65,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GSkeleton`** (`packages/ui/src/components/skeleton/GSkeleton.tsx`)
   Komponen utilitas untuk membuat efek pemuatan (*loading*) dengan animasi *placeholder* berdenyut (pulse). Sangat fleksibel untuk berbagai bentuk layout.
 
+- **`GTextarea`** (`packages/ui/src/components/textarea/GTextarea.tsx`)
+  Komponen input teks area multibaris dengan dukungan label, helper text, dan state error. Mengikuti desain sistem GenPOS dengan border halus dan fokus berwarna orange.
+
 - **`GBadge`** (`packages/ui/src/components/badge/GBadge.tsx`)
   Komponen label kecil (*pill*) untuk menampilkan status atau kategori. Tersedia dalam berbagai varian warna (success, error, warning, dsb) dengan dukungan icon.
 
