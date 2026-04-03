@@ -149,3 +149,29 @@ export const LargeDataset: Story = {
     pageSizeOptions: [5, 10, 15, 20],
   },
 };
+
+export const LoadingState: Story = {
+  args: {
+    columns: columns as any,
+    data: [],
+    isLoading: true,
+  },
+};
+
+export const EmptyState: Story = {
+  args: {
+    columns: columns as any,
+    data: [],
+    emptyElement: (
+      <div className="py-12 flex flex-col items-center justify-center space-y-4">
+        <div className="h-16 w-16 bg-orange-50 rounded-full flex items-center justify-center">
+            <span className="text-2xl opacity-40 text-orange-500 italic">?</span>
+        </div>
+        <div className="text-center">
+          <p className="text-stone-800 font-bold">Wah, datanya masih kosong nih!</p>
+          <p className="text-stone-500 text-sm">Coba buat data baru atau ganti filter pencarianmu.</p>
+        </div>
+      </div>
+    ),
+  },
+};

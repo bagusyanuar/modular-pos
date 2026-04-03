@@ -23,14 +23,14 @@ const badgeVariants = cva(
 
 export interface GBadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
+  VariantProps<typeof badgeVariants> {
   icon?: React.ReactNode;
 }
 
 function GBadge({ className, variant, icon, children, ...props }: GBadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props}>
-      {icon && <span className="flex-shrink-0">{icon}</span>}
+      {icon && <span className="shrink-0">{icon}</span>}
       {children}
     </div>
   );
