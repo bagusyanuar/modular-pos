@@ -11,6 +11,7 @@ export const buttonVariants = cva(
           'bg-white border border-orange-500 text-orange-500 hover:bg-stone-50 hover:border-orange-600',
         ghost: 'bg-transparent text-neutral-700 hover:bg-stone-50',
         secondary: 'bg-gray-500 text-white hover:bg-gray-600',
+        destructive: 'bg-red-600 border border-red-600 text-white hover:bg-red-700 hover:border-red-700',
       },
       loading: {
         true: 'cursor-not-allowed bg-orange-600 border-orange-600',

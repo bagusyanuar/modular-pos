@@ -19,6 +19,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GPopover`** (`packages/ui/src/components/popover/GPopover.tsx`)
   Komponen *floating menu* yang cerdas menggunakan Radix UI. Otomatis menentukan posisi terbaik di layar (collision detection). Cocok untuk menu profil, filter, atau informasi tambahan.
 
+- **`GDialog`** (`packages/ui/src/components/dialog/GDialog.tsx`)
+  Komponen modal/dialog dengan efek *glassmorphism* (`blur-md`) pada *backdrop*. Sangat fleksibel dengan dukungan sub-komponen `GDialogHeader`, `GDialogFooter`, `GDialogTitle`, dan `GDialogDescription`.
+
 ## 📝 Form & Input Components
 - **`GTextField`** (`packages/ui/src/components/textfield/GTextField.tsx`)
   Input text standar, dilengkapi *state error*, *disabled*, serta opsi icon.
