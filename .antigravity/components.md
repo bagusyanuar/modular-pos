@@ -41,6 +41,15 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GMultiSelect`** (`packages/ui/src/components/select/GMultiSelect.tsx`)
   Dropdown *select* yang memungkinkan pemilihan opsi lebih dari satu nilai sekaligus.
 
+- **`GCalendar`** (`packages/ui/src/components/calendar/GCalendar.tsx`)
+  Komponen kalender murni berbasis `react-day-picker`. Digunakan sebagai fondasi untuk DatePicker atau bisa digunakan stand-alone.
+
+- **`GDatePicker` & `GDateRangePicker`** (`packages/ui/src/components/datepicker/index.ts`)
+  Komponen pemilih tanggal (tunggal atau rentang) yang terintegrasi dengan Popover. Menggunakan `date-fns` untuk pemformatan tanggal yang standar.
+
+- **`GTimePicker` & `GDateTimePicker`** (`packages/ui/src/components/datepicker/index.ts`)
+  Komponen pemilih waktu mandiri atau gabungan bersama kalender. Menggunakan elemen native waktu yang di-*styling* sehingga sangat aksesibel dan mulus di akses via piranti seluler.
+
 - **`GSwitch`** (`packages/ui/src/components/switch/GSwitch.tsx`)
   Tombol *toggle* geser yang halus. Mendukung label opsional di sisi kiri (`leftLabel`) dan kanan (`rightLabel`). Menggunakan warna brand oranye saat aktif.
 
