@@ -59,6 +59,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GDataTable`** (`packages/ui/src/components/table/GDataTable.tsx`)
   Komponen tabel data tingkat lanjut berbasis **TanStack Table v8**. Mendukung fitur *sorting*, *pagination*, *row selection*, dan kustomisasi cell (seperti avatar dan badge status).
 
+- **`GTabs`** (`packages/ui/src/components/tabs/GTabs.tsx`)
+  Komponen navigasi tab dengan animasi *sliding indicator* yang halus menggunakan **Framer Motion**. Mendukung *Compound Component* pattern untuk fleksibilitas konten yang tinggi.
+
 - **`GBadge`** (`packages/ui/src/components/badge/GBadge.tsx`)
   Komponen label kecil (*pill*) untuk menampilkan status atau kategori. Tersedia dalam berbagai varian warna (success, error, warning, dsb) dengan dukungan icon.
 
