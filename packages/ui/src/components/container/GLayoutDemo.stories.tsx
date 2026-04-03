@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { GContent } from './index';
 import { GSidebar, GSidebarItem, GSidebarTreeItem } from '../sidebar';
 import { GNavbar } from '../navbar';
+import { GLayoutProvider } from '../../context/layout';
 import { 
   LuLayoutDashboard, 
   LuUsers, 
@@ -15,7 +16,7 @@ import {
   LuLogOut
 } from 'react-icons/lu';
 import { MemoryRouter } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
 
 const meta: Meta<typeof GContent> = {
   title: 'Layout/GLayoutDemo',
@@ -24,41 +25,29 @@ const meta: Meta<typeof GContent> = {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <MemoryRouter>
-         <Story />
-      </MemoryRouter>
-    ),
-  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof GContent>;
 
 const FullLayoutTemplate: React.FC<any> = (args) => {
-  const [collapsed, setCollapsed] = useState(args.collapsed || false);
-  
   return (
     <div className="h-screen flex overflow-hidden">
-      <GSidebar 
-        collapsed={collapsed} 
-        onToggle={() => setCollapsed(!collapsed)}
-      >
-        <GSidebarItem label="Dashboard" icon={LuLayoutDashboard} active collapsed={collapsed} />
-        <GSidebarTreeItem label="Inventory" icon={LuPackage} collapsed={collapsed}>
+      <GSidebar>
+        <GSidebarItem label="Dashboard" icon={LuLayoutDashboard} active />
+        <GSidebarTreeItem label="Inventory" icon={LuPackage}>
           <GSidebarItem label="All Products" icon={LuPackage} to="/inventory/all" />
           <GSidebarItem label="Add New" icon={LuPlus} to="/inventory/add" />
         </GSidebarTreeItem>
-        <GSidebarItem label="History" icon={LuHistory} collapsed={collapsed} />
-        <GSidebarItem label="Users" icon={LuUsers} collapsed={collapsed} />
+        <GSidebarItem label="History" icon={LuHistory} />
+        <GSidebarItem label="Users" icon={LuUsers} />
         <div className="pt-4 mt-4 border-t border-gray-100">
-          <GSidebarItem label="Settings" icon={LuSettings} collapsed={collapsed} />
+          <GSidebarItem label="Settings" icon={LuSettings} />
         </div>
       </GSidebar>
       
       <div className="flex-1 flex flex-col min-w-0">
-        <GNavbar collapsed={collapsed}>
+        <GNavbar>
           <div className="flex items-center gap-4 w-full">
             <h2 className="text-lg font-semibold text-gray-800">Layout Demo</h2>
             <div className="ml-auto flex items-center gap-3">
@@ -72,7 +61,7 @@ const FullLayoutTemplate: React.FC<any> = (args) => {
           </div>
         </GNavbar>
         
-        <GContent collapsed={collapsed} maxWidth={args.maxWidth} className="overflow-y-auto">
+        <GContent maxWidth={args.maxWidth} className="overflow-y-auto">
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(12)].map((_, i) => (
                 <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all h-64 border-b-4 border-b-orange-500/10 hover:border-b-orange-500">

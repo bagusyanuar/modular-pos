@@ -12,11 +12,9 @@ const meta: Meta<typeof GSidebarItem> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <div className="w-64 p-4 bg-white border rounded-xl">
-          <Story />
-        </div>
-      </MemoryRouter>
+      <div className="w-64 p-4 bg-white border rounded-xl">
+        <Story />
+      </div>
     ),
   ],
 };

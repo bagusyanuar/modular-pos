@@ -5,7 +5,8 @@
   "description": "UI components for Gen Pos System",
   "license": "MIT",
   "exports": {
-    "./*": "./src/components/*/index.ts"
+    "./*": "./src/components/*/index.ts",
+    "./context/*": "./src/context/*/index.ts"
   },
   "files": [
     "dist"

@@ -13,18 +13,16 @@ const meta: Meta<typeof GSidebarTreeItem> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <div className="h-screen bg-gray-100 flex">
-          <div className="w-64 bg-white border-r">
-            <div className="p-4 space-y-1">
-              <Story />
-            </div>
+      <div className="h-screen bg-gray-100 flex">
+        <div className="w-64 bg-white border-r">
+          <div className="p-4 space-y-1">
+            <Story />
           </div>
-          <main className="flex-1 p-8">
-            <h1 className="text-2xl font-bold">Main Content Area</h1>
-          </main>
         </div>
-      </MemoryRouter>
+        <main className="flex-1 p-8">
+          <h1 className="text-2xl font-bold">Main Content Area</h1>
+        </main>
+      </div>
     ),
   ],
 };
@@ -45,17 +43,20 @@ export const Default: Story = {
 };
 
 export const WithActiveChild: Story = {
+  parameters: {
+    router: {
+      initialEntries: ['/sales/report'],
+    },
+  },
   decorators: [
     (Story) => (
-      <MemoryRouter initialEntries={['/sales/report']}>
-        <div className="h-screen bg-gray-100 flex">
-          <div className="w-64 bg-white border-r">
-            <div className="p-4 space-y-1 text-gray-500">
-               <Story />
-            </div>
+      <div className="h-screen bg-gray-100 flex">
+        <div className="w-64 bg-white border-r">
+          <div className="p-4 space-y-1 text-gray-500">
+             <Story />
           </div>
         </div>
-      </MemoryRouter>
+      </div>
     ),
   ],
   args: {

@@ -5,25 +5,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { LuChevronDown } from 'react-icons/lu';
 import { sidebarItemVariants } from './gsidebar.variants';
 import { cn } from '../../utils';
+import { useGLayout } from '../../context/layout';
 import { GTooltip } from '../tooltip';
 
 interface GSidebarTreeItemProps {
   label: string;
   icon: IconType;
   children: React.ReactNode;
+  active?: boolean;
   collapsed?: boolean;
-  defaultOpen?: boolean;
   className?: string;
+  defaultOpen?: boolean;
 }
 
 const GSidebarTreeItem: React.FC<GSidebarTreeItemProps> = ({
   label,
   icon: Icon,
   children,
-  collapsed = false,
-  defaultOpen = false,
+  active: propsActive = false,
+  collapsed: propsCollapsed,
   className,
+  defaultOpen = false,
 }) => {
+  const { collapsed: contextCollapsed } = useGLayout();
+  const collapsed = propsCollapsed !== undefined ? propsCollapsed : contextCollapsed;
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [hasActiveChild, setHasActiveChild] = useState(false);
   const location = useLocation();

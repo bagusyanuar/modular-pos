@@ -13,15 +13,13 @@ const meta: Meta<typeof GSidebar> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <div className="h-screen bg-gray-100 flex">
-          <Story />
-          <main className="flex-1 p-8">
-            <h1 className="text-2xl font-bold">Main Content Area</h1>
-            <p className="text-gray-500 mt-2">Content goes here...</p>
-          </main>
-        </div>
-      </MemoryRouter>
+      <div className="h-screen bg-gray-100 flex">
+        <Story />
+        <main className="flex-1 p-8">
+          <h1 className="text-2xl font-bold">Main Content Area</h1>
+          <p className="text-gray-500 mt-2">Content goes here...</p>
+        </main>
+      </div>
     ),
   ],
 };
@@ -30,41 +28,30 @@ export default meta;
 type Story = StoryObj<typeof GSidebar>;
 
 const SidebarTemplate: React.FC<any> = (args) => {
-  const [collapsed, setCollapsed] = useState(args.collapsed || false);
-  
   return (
-    <GSidebar 
-      {...args} 
-      collapsed={collapsed} 
-      onToggle={() => setCollapsed(!collapsed)}
-    >
+    <GSidebar {...args}>
       <GSidebarItem 
         label="Dashboard" 
         icon={LuLayoutDashboard} 
         active 
-        collapsed={collapsed} 
       />
       <GSidebarItem 
         label="Orders" 
         icon={LuShoppingCart} 
-        collapsed={collapsed} 
         badge={12}
       />
       <GSidebarItem 
         label="Products" 
         icon={LuPackage} 
-        collapsed={collapsed} 
       />
       <GSidebarItem 
         label="Customers" 
         icon={LuUsers} 
-        collapsed={collapsed} 
       />
       <div className="pt-4 mt-4 border-t border-gray-100">
         <GSidebarItem 
           label="Settings" 
           icon={LuSettings} 
-          collapsed={collapsed} 
         />
       </div>
     </GSidebar>

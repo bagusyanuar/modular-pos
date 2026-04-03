@@ -14,11 +14,9 @@ const meta: Meta<typeof GNavbar> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <div className="h-screen bg-gray-50 flex overflow-hidden">
-          <Story />
-        </div>
-      </MemoryRouter>
+      <div className="h-screen bg-gray-50 flex overflow-hidden">
+        <Story />
+      </div>
     ),
   ],
 };
@@ -27,19 +25,14 @@ export default meta;
 type Story = StoryObj<typeof GNavbar>;
 
 const LayoutTemplate: React.FC<any> = (args) => {
-  const [collapsed, setCollapsed] = useState(args.collapsed || false);
-  
   return (
     <>
-      <GSidebar 
-        collapsed={collapsed} 
-        onToggle={() => setCollapsed(!collapsed)}
-      >
-        <GSidebarItem label="Dashboard" icon={LuLayoutDashboard} active collapsed={collapsed} />
-        <GSidebarItem label="Users" icon={LuUsers} collapsed={collapsed} />
+      <GSidebar>
+        <GSidebarItem label="Dashboard" icon={LuLayoutDashboard} active />
+        <GSidebarItem label="Users" icon={LuUsers} />
       </GSidebar>
       
-      <GNavbar collapsed={collapsed}>
+      <GNavbar>
         <div className="flex items-center gap-4 w-full">
           <button className="text-gray-500 md:hidden">
             <LuMenu size={20} />
@@ -77,10 +70,7 @@ const LayoutTemplate: React.FC<any> = (args) => {
         </div>
       </GNavbar>
       
-      <main className={cn(
-        "flex-1 pt-20 p-8 transition-all duration-300 overflow-y-auto",
-        collapsed ? "pl-28" : "pl-72" 
-      )}>
+      <main className="flex-1 pt-20 p-8 transition-all duration-300 overflow-y-auto">
          <div className="h-[200vh]">
             <h1 className="text-3xl font-bold">Main Content Area</h1>
             <p className="text-gray-500 mt-4">Scroll down to see the sticky effects of Navbar and Sidebar.</p>

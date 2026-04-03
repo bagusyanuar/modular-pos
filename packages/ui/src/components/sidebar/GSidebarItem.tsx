@@ -4,6 +4,7 @@ import type { IconType } from 'react-icons';
 import { sidebarItemVariants } from './gsidebar.variants';
 import { cn } from '../../utils';
 import { GTooltip } from '../tooltip';
+import { useGLayout } from '../../context/layout';
 
 interface GSidebarItemProps {
   label: string;
@@ -22,12 +23,14 @@ const GSidebarItem: React.FC<GSidebarItemProps> = ({
   icon: Icon,
   to,
   active = false,
-  collapsed = false,
+  collapsed: propsCollapsed,
   badge,
   onClick,
   className,
   isChild = false,
 }) => {
+  const { collapsed: contextCollapsed } = useGLayout();
+  const collapsed = propsCollapsed !== undefined ? propsCollapsed : contextCollapsed;
   const renderContent = (isActive: boolean) => (
     <div
       className={cn(

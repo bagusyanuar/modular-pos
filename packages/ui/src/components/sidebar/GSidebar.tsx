@@ -2,12 +2,13 @@ import React from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { sidebarVariants } from './gsidebar.variants';
 import { cn } from '../../utils';
-import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
+import { LuChevronLeft } from 'react-icons/lu';
+import { useGLayout } from '../../context/layout';
 
-interface GSidebarProps extends VariantProps<typeof sidebarVariants> {
+interface GSidebarProps {
   children: React.ReactNode;
-  collapsed: boolean;
-  onToggle: () => void;
+  collapsed?: boolean;
+  onToggle?: () => void;
   logo?: React.ReactNode;
   footer?: React.ReactNode;
   className?: string;
@@ -15,12 +16,15 @@ interface GSidebarProps extends VariantProps<typeof sidebarVariants> {
 
 const GSidebar: React.FC<GSidebarProps> = ({
   children,
-  collapsed = false,
-  onToggle,
+  collapsed: propsCollapsed,
+  onToggle: propsOnToggle,
   logo,
   footer,
   className,
 }) => {
+  const { collapsed: contextCollapsed, toggleSidebar } = useGLayout();
+  const collapsed = propsCollapsed !== undefined ? propsCollapsed : contextCollapsed;
+  const onToggle = propsOnToggle || toggleSidebar;
   return (
     <aside className={cn(sidebarVariants({ collapsed }), className)}>
       {/* Header / Logo */}
