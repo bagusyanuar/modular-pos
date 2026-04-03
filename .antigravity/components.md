@@ -56,8 +56,11 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GFileUpload`** (`packages/ui/src/components/fileupload/GFileUpload.tsx`)
   Komponen untuk mengunggah satu atau banyak file sekaligus dengan fitur *drag & drop*. Mendukung validasi tipe file, ukuran maksimal, dan tampilan daftar file yang akan diunggah.
 
-- **`GCollapsible`** (`packages/ui/src/components/collapsible/GCollapsible.tsx`)
-  Komponen untuk menyembunyikan atau menampilkan konten secara dinamis dengan animasi tinggi yang halus menggunakan Framer Motion. Ideal untuk FAQ, filter, atau pengelompokan menu.
+- **`GDataTable`** (`packages/ui/src/components/table/GDataTable.tsx`)
+  Komponen tabel data tingkat lanjut berbasis **TanStack Table v8**. Mendukung fitur *sorting*, *pagination*, *row selection*, dan kustomisasi cell (seperti avatar dan badge status).
+
+- **`GBadge`** (`packages/ui/src/components/badge/GBadge.tsx`)
+  Komponen label kecil (*pill*) untuk menampilkan status atau kategori. Tersedia dalam berbagai varian warna (success, error, warning, dsb) dengan dukungan icon.
 
 ---
 
