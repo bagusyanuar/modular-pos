@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FaPlus } from 'react-icons/fa';
+import { LuPlus } from 'react-icons/lu';
 import GButton from './GButton';
 
 const meta: Meta<typeof GButton> = {
@@ -9,29 +9,31 @@ const meta: Meta<typeof GButton> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'outline', 'ghost'],
-      description: 'The visual style of the button',
+      options: ['primary', 'outline', 'ghost', 'destructive', 'secondary'],
+      description: 'Gaya visual tombol',
       table: {
-        type: { summary: "'primary' | 'outline' | 'ghost'" },
+        type: { summary: "'primary' | 'outline' | 'ghost' | 'destructive' | 'secondary'" },
       },
     },
     className: {
       control: { type: 'text' },
-      description: 'Additional CSS classes to apply to the button',
+      description: 'Class CSS tambahan untuk tombol',
     },
     prefixIcon: {
-      options: ['FaPlus', 'None'],
-      mapping: { FaPlus: FaPlus, None: undefined },
+      options: ['PlusIcon', 'None'],
+      mapping: { PlusIcon: LuPlus, None: undefined },
       control: { type: 'select' },
-      description:
-        'Icon to display before the button text, using the react-icons component library',
+      description: 'Icon yang tampil sebelum teks (menggunakan react-icons/lu)',
     },
     suffixIcon: {
-      options: ['FaPlus', 'None'],
-      mapping: { FaPlus: FaPlus, None: undefined },
+      options: ['PlusIcon', 'None'],
+      mapping: { PlusIcon: LuPlus, None: undefined },
       control: { type: 'select' },
-      description:
-        'Icon to display after the button text, using the react-icons component library',
+      description: 'Icon yang tampil sesudah teks (menggunakan react-icons/lu)',
+    },
+    children: {
+      control: { type: 'text' },
+      description: 'Konten di dalam tombol',
     },
   },
 };
@@ -41,44 +43,46 @@ type Story = StoryObj<typeof GButton>;
 
 export const Primary: Story = {
   args: {
-    text: 'Primary Button',
+    children: 'Tombol Utama',
     variant: 'primary',
   },
 };
 
 export const Outline: Story = {
   args: {
-    text: 'Outline Button',
+    children: 'Tombol Outline',
     variant: 'outline',
   },
 };
 
 export const Ghost: Story = {
   args: {
-    text: 'Ghost Button',
+    children: 'Tombol Ghost',
     variant: 'ghost',
   },
 };
 
 export const WithPrefixIcon: Story = {
   args: {
-    text: 'Button with Icon',
+    children: 'Tombol dengan Ikon',
     variant: 'primary',
-    prefixIcon: FaPlus,
+    prefixIcon: LuPlus,
   },
   parameters: {
     docs: {
       description: {
-        story: 'Button with a prefix icon using `react-icons`.',
+        story: 'Tombol dengan prefix icon menggunakan `react-icons/lu`.',
       },
       source: {
-        code: `import { FaPlus } from 'react-icons/fa';
+        code: `import { LuPlus } from 'react-icons/lu';
+import { GButton } from '@genpos/ui';
 
-<Button
-  prefixIcon={FaPlus}
-  text="Button with Icon"
+<GButton
+  prefixIcon={LuPlus}
   variant="primary"
-/>`,
+>
+  Tombol dengan Ikon
+</GButton>`,
       },
     },
   },
@@ -86,20 +90,22 @@ export const WithPrefixIcon: Story = {
 
 export const WithSuffixIcon: Story = {
   args: {
-    text: 'Button with Icon',
+    children: 'Tombol dengan Ikon',
     variant: 'primary',
-    suffixIcon: FaPlus,
+    suffixIcon: LuPlus,
   },
   parameters: {
     docs: {
       source: {
-        code: `import { FaPlus } from 'react-icons/fa';
+        code: `import { LuPlus } from 'react-icons/lu';
+import { GButton } from '@genpos/ui';
 
-<Button
-  suffixIcon={FaPlus}
-  text="Button with Icon"
+<GButton
+  suffixIcon={LuPlus}
   variant="primary"
-/>`,
+>
+  Tombol dengan Ikon
+</GButton>`,
       },
     },
   },
@@ -107,16 +113,16 @@ export const WithSuffixIcon: Story = {
 
 export const Loading: Story = {
   args: {
-    text: 'Loading Button',
+    children: 'Sedang Memproses',
     variant: 'primary',
     loading: true,
-    loadingText: 'processing...',
+    loadingText: 'Memproses...',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    text: 'Disabled Button',
+    children: 'Tombol Mati',
     variant: 'primary',
     disabled: true,
   },
@@ -124,8 +130,8 @@ export const Disabled: Story = {
 
 export const Clicked: Story = {
   args: {
-    text: 'Click Me',
+    children: 'Klik Saya',
     variant: 'primary',
-    onClick: () => alert('button clicked'),
+    onClick: () => alert('Tombol diklik!'),
   },
 };

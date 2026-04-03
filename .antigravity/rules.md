@@ -20,7 +20,7 @@ Bantu aku membangun aplikasi **POS (Point Of Sales)** berkonsep monorepo. Gunaka
 - **Styling**: Tailwind CSS v4 (Utility-first)
 - **State Management**: React Context / Zustand (Pilih yang paling ringan)
 - **Routing**: TanStack Router
-- **Icons**: Lucide React
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) (Gunakan `react-icons/lu` untuk konsistensi look Lucide)
 
 ## 🎨 Design System
 
@@ -45,4 +45,4 @@ Bantu aku membangun aplikasi **POS (Point Of Sales)** berkonsep monorepo. Gunaka
 ## 📂 Knowledge & References
 
 - **SKILL Reference**: Baca [`.antigravity/SKILL.md`](file:///d:/react/modular-pos/.antigravity/SKILL.md) untuk panduan teknis pembuatan komponen dengan CVA dan Tailwind v4.
-- **Component Registry**: Cek daftar lengkap komponen UI yang tersedia di [`.antigravity/components.md`](file:///d:/react/modular-pos/.antigravity/components.md) sebelum melakukan _layouting_ atau memecah komponen baru.
+- **Component Registry**: Cek daftar lengkap komponen UI yang tersedia di [`.antigravity/components.md`](file:///h:/react/modular-pos/.antigravity/components.md) sebelum melakukan _layouting_ atau memecah komponen baru.

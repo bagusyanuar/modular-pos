@@ -53,6 +53,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GSwitch`** (`packages/ui/src/components/switch/GSwitch.tsx`)
   Tombol *toggle* geser yang halus. Mendukung label opsional di sisi kiri (`leftLabel`) dan kanan (`rightLabel`). Menggunakan warna brand oranye saat aktif.
 
+- **`GFileUpload`** (`packages/ui/src/components/fileupload/GFileUpload.tsx`)
+  Komponen untuk mengunggah satu atau banyak file sekaligus dengan fitur *drag & drop*. Mendukung validasi tipe file, ukuran maksimal, dan tampilan daftar file yang akan diunggah.
+
 ---
 
 > ✨ **Catatan:** Jika dalam desain terdapat elemen yang tidak ada di daftar ini, pertimbangkan untuk membuat komponen baru berawalan huruf **G** (GenPOS) di `packages/ui/src/components/` mengikuti skill CVA + `className` merger (`./utils/cn.ts`).

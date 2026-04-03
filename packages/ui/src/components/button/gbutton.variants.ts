@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const buttonVariants = cva(
-  'flex items-center justify-center px-3 py-2.5 gap-2 text-xs rounded-lg font-medium cursor-pointer transition-color ease-in-out duration-300',
+  'flex items-center justify-center gap-2 rounded-lg font-medium cursor-pointer transition-all duration-300 ease-in-out disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
@@ -13,15 +13,21 @@ export const buttonVariants = cva(
         secondary: 'bg-gray-500 text-white hover:bg-gray-600',
         destructive: 'bg-red-600 border border-red-600 text-white hover:bg-red-700 hover:border-red-700',
       },
+      size: {
+        default: 'px-3 py-2.5 text-xs',
+        sm: 'px-2 py-1.5 text-[10px]',
+        lg: 'px-6 py-3 text-sm',
+      },
       loading: {
-        true: 'cursor-not-allowed bg-orange-600 border-orange-600',
+        true: 'opacity-80 pointer-events-none',
       },
       disabled: {
-        true: 'cursor-not-allowed text-neutral-500 bg-stone-200 border-stone-200 hover:bg-stone-200 hover:border-stone-200',
+        true: 'text-neutral-500 bg-stone-200 border-stone-200 hover:bg-stone-200 hover:border-stone-200',
       },
     },
     defaultVariants: {
       variant: 'primary',
+      size: 'default',
     },
   }
 );
