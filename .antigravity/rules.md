@@ -29,7 +29,12 @@ Kamu adalah Senior Frontend Engineer. Berikan jawaban yang ringkas, teknis, dan 
 
 ## 🚀 Workflow
 
-1. **Analyze**: Pahami task dan cek apakah ada reusable component yang sudah ada.
+1. **Analyze**: Pahami task dan cek apakah ada reusable component yang sudah ada. Jika menerima *mockup/gambar layout UI*, **WAJIB** mengecek dan menggunakan komponen-komponen yang sudah tersedia di `packages/ui` sebelum membuat elemen baru dari nol.
 2. **Plan**: Tentukan apakah perlu refactor atau bisa langsung implementasi.
 3. **Implement**: Tulis kode sesuai standards.
 4. **Test**: Pastikan tidak ada regression di app lain.
+
+## 📂 Knowledge & References
+
+- **SKILL Reference**: Baca [`.antigravity/SKILL.md`](file:///d:/react/modular-pos/.antigravity/SKILL.md) untuk panduan teknis pembuatan komponen dengan CVA dan Tailwind v4.
+- **Component Registry**: Cek daftar lengkap komponen UI yang tersedia di [`.antigravity/components.md`](file:///d:/react/modular-pos/.antigravity/components.md) sebelum melakukan *layouting* atau memecah komponen baru.
