@@ -13,6 +13,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GButton`** (`packages/ui/src/components/button/GButton.tsx`)
   Tombol serbaguna dengan berbagai variant (primary, destructive, dll). Mendukung *loading state* terintegrasi dan *Prefix/Suffix Icons*.
 
+- **`GToast`** (`packages/ui/src/components/toast/GToast.tsx`)
+  Sistem notifikasi/toast menggunakan `sonner`. Render `GToast` di root aplikasi dan gunakan fungsi `toast()` untuk memicu pesan. Mendukung tipe *success, error, info, dan action*.
+
 ## 📝 Form & Input Components
 - **`GTextField`** (`packages/ui/src/components/textfield/GTextField.tsx`)
   Input text standar, dilengkapi *state error*, *disabled*, serta opsi icon.
