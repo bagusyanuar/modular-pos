@@ -2,6 +2,10 @@
 
 Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan saat melakukan integrasi atau *slicing* UI untuk menghindari duplikasi kode.
 
+## 🔠 Typography
+- **`GTypography`** (`packages/ui/src/components/typography/GTypography.tsx`)
+  Komponen untuk mengatur standarisasi teks yang merender `h1`-`h6`, `p`, `small`, dll secara semantik. Mendukung pengaturan `weigh`, `align`, dan warna `color` (termasuk *brand primary*).
+
 ## 🔘 Action Components
 - **`GButton`** (`packages/ui/src/components/button/GButton.tsx`)
   Tombol serbaguna dengan berbagai variant (primary, destructive, dll). Mendukung *loading state* terintegrasi dan *Prefix/Suffix Icons*.
