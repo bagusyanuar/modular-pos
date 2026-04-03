@@ -22,6 +22,12 @@ Bantu aku membangun aplikasi **POS (Point Of Sales)** berkonsep monorepo. Gunaka
 - **Routing**: TanStack Router
 - **Icons**: Lucide React
 
+## 🎨 Design System
+
+1. **Base Branding**: Gunakan **`orange-500`** dari Tailwind sebagai warna utama proyek (**GenPOS Orange**).
+2. **Layouting Rule**: Jika menerima *mockup/gambar desain*, asumsikan elemen dekoratif, tombol *Primary*, dan *background* utama yang tidak didefinisikan secara spesifik akan menggunakan warna dasar `orange-500`.
+3. **Consistency**: Selalu gunakan token Tailwind (`orange-500`, `orange-600` untuk hover, dst) ketimbang *raw hex codes*.
+
 ## 📝 Coding Standards
 
 - **Component Naming**: PascalCase (e.g., `UserProfileCard.tsx`)

@@ -2,6 +2,9 @@
 
 Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan saat melakukan integrasi atau *slicing* UI untuk menghindari duplikasi kode.
 
+> [!IMPORTANT]
+> **🎨 Design System Reminder**: Base color proyek ini adalah **`orange-500`**. Selalu gunakan warna ini untuk *background* utama, elemen dekoratif, dan *primary action* jika tidak ditentukan lain dalam desain *mockup*.
+
 ## 🔠 Typography
 - **`GTypography`** (`packages/ui/src/components/typography/GTypography.tsx`)
   Komponen untuk mengatur standarisasi teks yang merender `h1`-`h6`, `p`, `small`, dll secara semantik. Mendukung pengaturan `weigh`, `align`, dan warna `color` (termasuk *brand primary*).
