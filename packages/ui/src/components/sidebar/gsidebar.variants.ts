@@ -26,7 +26,7 @@ export const sidebarItemVariants = cva(
 );
 
 export const sidebarVariants = cva(
-  'h-screen flex flex-col bg-white border-r border-gray-100 transition-all duration-300 ease-in-out relative shrink-0',
+  'fixed left-0 top-0 h-screen flex flex-col bg-white border-r border-gray-100 transition-all duration-300 ease-in-out z-50 shrink-0',
   {
     variants: {
       collapsed: {
