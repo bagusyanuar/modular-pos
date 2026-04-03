@@ -46,7 +46,10 @@ const GSidebar: React.FC<GSidebarProps> = ({
       </div>
 
       {/* Navigation Content */}
-      <nav className="flex-1 overflow-y-auto overflow-x-hidden py-4 px-3 space-y-1 custom-scrollbar">
+      <nav className={cn(
+        "flex-1 overflow-y-auto overflow-x-hidden py-4 px-3 space-y-1 custom-scrollbar",
+        collapsed && "px-0 flex flex-col items-center"
+      )}>
         {children}
       </nav>
 

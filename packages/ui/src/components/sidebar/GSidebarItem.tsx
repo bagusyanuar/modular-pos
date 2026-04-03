@@ -76,7 +76,7 @@ const GSidebarItem: React.FC<GSidebarItemProps> = ({
       <NavLink
         to={to}
         className={({ isActive }) =>
-          cn('block outline-none', (isActive || active) && 'active')
+          cn('block outline-none w-full', (isActive || active) && 'active', collapsed && 'flex justify-center')
         }
       >
         {({ isActive }) => wrapWithTooltip(renderContent(isActive || active))}

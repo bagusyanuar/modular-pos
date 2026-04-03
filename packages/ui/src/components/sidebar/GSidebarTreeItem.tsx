@@ -104,7 +104,7 @@ const GSidebarTreeItem: React.FC<GSidebarTreeItemProps> = ({
   );
 
   return (
-    <div className="flex flex-col">
+    <div className={cn("flex flex-col w-full", collapsed && "items-center")}>
       {TooltipWrapper}
       
       {!collapsed && (

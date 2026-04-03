@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const sidebarItemVariants = cva(
-  'group flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer text-sm font-medium relative',
+  'group flex items-center rounded-lg transition-all duration-200 cursor-pointer text-sm font-medium relative',
   {
     variants: {
       active: {
@@ -9,8 +9,8 @@ export const sidebarItemVariants = cva(
         false: 'text-gray-500 hover:bg-gray-50 hover:text-gray-900',
       },
       collapsed: {
-        true: 'justify-center px-0 w-10 h-10 mx-auto',
-        false: 'w-full',
+        true: 'justify-center w-10 h-10 mx-auto',
+        false: 'w-full gap-3 px-3 py-2',
       },
       isChild: {
         true: 'pl-11 py-1.5 text-xs text-gray-500 hover:text-orange-500',
