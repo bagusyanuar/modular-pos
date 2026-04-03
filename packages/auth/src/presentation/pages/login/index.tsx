@@ -1,10 +1,13 @@
-import { Illustration, LoginForm } from '../../components';
+import React from 'react';
+import { Illustration, FormLogin } from '../../components';
+
 const LoginPage = () => {
   return (
-    <div className="w-full h-dvh bg-orange-100 flex items-center justify-center">
-      <div className="w-3xl bg-white rounded-xl h-120 shadow-lg grid grid-cols-2 overflow-hidden">
+    <div className="w-full min-h-screen bg-slate-100 flex items-center justify-center p-4">
+      {/* Wrapper */}
+      <div className="w-full max-w-5xl bg-white rounded-4xl shadow-2xl flex overflow-hidden min-h-[600px]">
         <Illustration />
-        <LoginForm />
+        <FormLogin />
       </div>
     </div>
   );

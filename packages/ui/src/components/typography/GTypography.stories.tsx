@@ -23,7 +23,7 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: ['default', 'primary', 'destructive', 'white'],
+      options: ['default', 'primary', 'destructive', 'white', 'muted'],
     },
   },
 } satisfies Meta<typeof GTypography>;

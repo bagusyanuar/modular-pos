@@ -33,6 +33,7 @@ export const typographyVariants = cva(
         primary: 'text-orange-500',
         destructive: 'text-red-500',
         white: 'text-white',
+        muted: 'text-neutral-500',
       }
     },
     defaultVariants: {
