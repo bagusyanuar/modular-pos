@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GTypography } from '@genpos/ui/typography';
 import { GTextfield } from '@genpos/ui/textfield';
 import { GPasswordfield } from '@genpos/ui/passwordfield';
 import { GCheckbox } from '@genpos/ui/checkbox';
 import { GButton } from '@genpos/ui/button';
 import { LuArrowRight } from 'react-icons/lu';
+import { useLogin } from '../../hooks';
 
 const FormLogin = () => {
-  const [activeTab, setActiveTab] = useState('CASHIER');
-  const tabs = ['CASHIER', 'MANAGER', 'ADMIN'];
+  const {
+    activeTab,
+    setActiveTab,
+    isLoading,
+    identifier,
+    setIdentifier,
+    handleLogin,
+    tabs,
+  } = useLogin();
 
   return (
     <div className="flex-1 bg-white p-10 md:p-16 flex flex-col justify-center">
@@ -23,15 +31,16 @@ const FormLogin = () => {
 
       {/* Role Tabs */}
       <div className="flex bg-slate-50 p-1.5 rounded-xl mb-10 border border-slate-100 shadow-inner">
-        {tabs.map((tab) => (
+        {tabs.map((tab: string) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
+            disabled={isLoading}
             className={`flex-1 py-2.5 px-2 rounded-lg text-xs font-bold tracking-wider transition-all duration-300 text-center ${
               activeTab === tab
                 ? 'bg-white text-orange-500 shadow-sm ring-1 ring-slate-200/50'
                 : 'text-slate-400 hover:text-slate-600'
-            }`}
+            } ${isLoading && 'opacity-50 cursor-not-allowed'}`}
           >
             {tab}
           </button>
@@ -66,6 +75,9 @@ const FormLogin = () => {
           <GTextfield
             placeholder="e.g., CSH-001 or john@store.com"
             className="w-full bg-slate-50/50 border-slate-200 focus-within:border-orange-500"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
@@ -95,7 +107,9 @@ const FormLogin = () => {
             </div>
             <a
               href="#"
-              className="text-xs font-bold text-orange-500 hover:text-orange-600 hover:underline"
+              className={`text-xs font-bold text-orange-500 hover:text-orange-600 hover:underline ${
+                isLoading && 'pointer-events-none opacity-50'
+              }`}
             >
               Recover Access
             </a>
@@ -103,17 +117,20 @@ const FormLogin = () => {
           <GPasswordfield
             placeholder="••••••••"
             className="w-full bg-slate-50/50 border-slate-200 focus-within:border-orange-500"
+            disabled={isLoading}
           />
         </div>
 
         <div className="mt-1 px-1">
-          <GCheckbox label="Keep this terminal signed in" />
+          <GCheckbox label="Keep this terminal signed in" disabled={isLoading} />
         </div>
 
         <GButton
           text="Open Register"
           className="w-full mt-4 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white rounded-lg py-3 shadow-md shadow-orange-500/20 transition-all font-semibold text-base"
           suffixIcon={LuArrowRight}
+          onClick={handleLogin}
+          loading={isLoading}
         />
       </div>
 
