@@ -16,6 +16,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 - **`GToast`** (`packages/ui/src/components/toast/GToast.tsx`)
   Sistem notifikasi/toast berbasis `sonner` dengan integrasi ikon `react-icons/lu`. Render `GToast` di root aplikasi dan gunakan fungsi `toast()` untuk memicu pesan. Mendukung *styling* otomatis untuk tipe `success` (hijau), `error` (merah), `warning` (amber), dan `info` (biru).
 
+- **`GPopover`** (`packages/ui/src/components/popover/GPopover.tsx`)
+  Komponen *floating menu* yang cerdas menggunakan Radix UI. Otomatis menentukan posisi terbaik di layar (collision detection). Cocok untuk menu profil, filter, atau informasi tambahan.
+
 ## 📝 Form & Input Components
 - **`GTextField`** (`packages/ui/src/components/textfield/GTextField.tsx`)
   Input text standar, dilengkapi *state error*, *disabled*, serta opsi icon.
@@ -34,6 +37,9 @@ Daftar komponen yang saat ini tersedia di `packages/ui` dan **WAJIB** digunakan 
 
 - **`GMultiSelect`** (`packages/ui/src/components/select/GMultiSelect.tsx`)
   Dropdown *select* yang memungkinkan pemilihan opsi lebih dari satu nilai sekaligus.
+
+- **`GSwitch`** (`packages/ui/src/components/switch/GSwitch.tsx`)
+  Tombol *toggle* geser yang halus. Mendukung label opsional di sisi kiri (`leftLabel`) dan kanan (`rightLabel`). Menggunakan warna brand oranye saat aktif.
 
 ---
 
