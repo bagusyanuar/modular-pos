@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@genpos/core": "workspace:*",
+    "@genpos/utils": "workspace:*",
     "axios": "^1.13.6"
   },
   "devDependencies": {

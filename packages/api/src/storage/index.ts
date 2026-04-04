@@ -1,15 +1,17 @@
-const ACCESS_TOKEN_KEY = 'pos_access_token';
+import { cookieStorage } from '@genpos/utils';
+
+const ACCESS_TOKEN_KEY = 'access_token';
 
 export const tokenStorage = {
   getAccessToken: (): string | null => {
-    return localStorage.getItem(ACCESS_TOKEN_KEY);
+    return cookieStorage.get<string>(ACCESS_TOKEN_KEY);
   },
 
   setAccessToken: (accessToken: string): void => {
-    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+    cookieStorage.set(ACCESS_TOKEN_KEY, accessToken);
   },
 
   clearAccessToken: (): void => {
-    localStorage.removeItem(ACCESS_TOKEN_KEY);
+    cookieStorage.remove(ACCESS_TOKEN_KEY);
   },
 };
