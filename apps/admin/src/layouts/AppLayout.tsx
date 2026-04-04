@@ -94,6 +94,7 @@ const AppLayout: React.FC = () => {
     <GLayoutProvider>
       <div className="flex min-h-screen bg-stone-50/50">
         <GSidebar 
+          version="2.0.1"
           footer={
             <div className="flex items-center gap-3 px-2 py-1">
               <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0">

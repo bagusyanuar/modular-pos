@@ -26,12 +26,14 @@ export const sidebarItemVariants = cva(
 );
 
 export const sidebarVariants = cva(
-  'fixed left-0 top-0 h-screen flex flex-col bg-white border-r border-gray-100 transition-all duration-300 ease-in-out z-50 shrink-0',
+  [
+    'relative h-screen flex flex-col bg-white border-r border-gray-100 transition-all duration-300 ease-in-out z-50 shrink-0 shadow-xl md:shadow-none',
+  ].join(' '),
   {
     variants: {
       collapsed: {
-        true: 'w-20',
-        false: 'w-64',
+        true: 'w-20 max-md:-translate-x-full md:translate-x-0 max-md:fixed',
+        false: 'w-64 max-md:translate-x-0 max-md:fixed',
       },
     },
     defaultVariants: {

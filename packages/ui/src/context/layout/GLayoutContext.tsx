@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
+import { useBreakpoint } from '@genpos/utils';
 
 interface GLayoutContextType {
   collapsed: boolean;
@@ -12,7 +13,15 @@ export const GLayoutProvider: React.FC<{ children: ReactNode; defaultCollapsed?:
   children,
   defaultCollapsed = false,
 }) => {
+  const isLg = useBreakpoint('lg');
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
+
+  // Auto-collapse when screen size is less than LG (1024px)
+  useEffect(() => {
+    if (!isLg) {
+      setCollapsed(true);
+    }
+  }, [isLg]);
 
   const toggleSidebar = useCallback(() => {
     setCollapsed((prev) => !prev);
