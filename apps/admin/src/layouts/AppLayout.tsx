@@ -11,7 +11,6 @@ import {
   LuUsers, 
   LuShoppingCart, 
   LuSettings,
-  LuLogOut
 } from '@genpos/ui/icons';
 
 interface UserData {
@@ -94,29 +93,23 @@ const AppLayout: React.FC = () => {
       <div className="flex min-h-screen bg-stone-50/50">
         <GSidebar 
           version="2.0.1"
-          footer={
-            <div className="flex items-center gap-3 px-2 py-1">
-              <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-                <span className="text-[10px] font-bold text-orange-600">
-                  {user?.identifier?.charAt(0).toUpperCase() || 'A'}
-                </span>
+          activeStore={{
+            name: "Agency",
+            branch: "Spark Pixel Team",
+            logo: <div className="text-blue-500 font-black text-xl">S</div>
+          }}
+          user={{
+            name: user?.identifier || "Salung Prastyo",
+            role: user?.role || "Sales Operator",
+            status: "online",
+            avatar: (
+              <div className="w-full h-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold select-none">
+                {user?.identifier?.charAt(0).toUpperCase() || "S"}
               </div>
-              <div className="flex-1 min-w-0 overflow-hidden">
-                <p className="text-xs font-bold text-stone-800 truncate">
-                  {user?.identifier || 'Guest User'}
-                </p>
-                <p className="text-[10px] text-stone-500 truncate uppercase tracking-wider">
-                  {user?.role || 'No Role'}
-                </p>
-              </div>
-              <button 
-                onClick={handleLogout}
-                className="text-stone-400 hover:text-red-500 transition-colors"
-              >
-                <LuLogOut size={16} />
-              </button>
-            </div>
-          }
+            )
+          }}
+          onLogout={handleLogout}
+          onProfile={() => console.log("Profile clicked")}
         >
           <GSidebarItem 
             icon={LuLayoutDashboard} 
