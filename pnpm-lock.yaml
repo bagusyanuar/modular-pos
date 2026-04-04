@@ -323,6 +323,9 @@ importers:
       '@genpos/core':
         specifier: workspace:*
         version: link:../core
+      '@genpos/utils':
+        specifier: workspace:*
+        version: link:../utils
       axios:
         specifier: ^1.13.6
         version: 1.13.6

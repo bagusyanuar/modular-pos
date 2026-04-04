@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
-import { useBreakpoint } from '@genpos/utils';
+import { useBreakpoint } from '../../hooks';
 
 interface GLayoutContextType {
   collapsed: boolean;
