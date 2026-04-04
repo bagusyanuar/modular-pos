@@ -50,6 +50,9 @@ importers:
       '@genpos/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@genpos/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@tailwindcss/vite':
         specifier: ^4.2.2
         version: 4.2.2(vite@8.0.1(@types/node@24.12.0)(esbuild@0.27.4)(jiti@2.6.1))
@@ -339,6 +342,9 @@ importers:
       '@genpos/ui':
         specifier: workspace:*
         version: link:../ui
+      '@genpos/utils':
+        specifier: workspace:*
+        version: link:../utils
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -464,6 +470,19 @@ importers:
       vite:
         specifier: ^7.1.0
         version: 7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)
+
+  packages/utils:
+    dependencies:
+      '@genpos/core':
+        specifier: workspace:*
+        version: link:../core
+      axios:
+        specifier: ^1.13.6
+        version: 1.13.6
+    devDependencies:
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
 
 packages:
 

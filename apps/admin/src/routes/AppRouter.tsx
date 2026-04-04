@@ -1,15 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
-
+import { APP_PATHS } from './paths';
 
 import AppLayout from '../layouts/AppLayout';
 
 const AppRouter = createBrowserRouter([
   {
-    path: '/',
     element: <AppLayout />,
     children: [
       {
-        path: '/dashboard',
+        path: APP_PATHS.DASHBOARD,
         element: <div />, // Placeholder untuk sementara
       },
     ],

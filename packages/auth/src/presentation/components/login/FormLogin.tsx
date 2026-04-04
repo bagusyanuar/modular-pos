@@ -122,16 +122,20 @@ const FormLogin = () => {
         </div>
 
         <div className="mt-1 px-1">
-          <GCheckbox label="Keep this terminal signed in" disabled={isLoading} />
+          <GCheckbox
+            label="Keep this terminal signed in"
+            disabled={isLoading}
+          />
         </div>
 
         <GButton
-          text="Open Register"
           className="w-full mt-4 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white rounded-lg py-3 shadow-md shadow-orange-500/20 transition-all font-semibold text-base"
           suffixIcon={LuArrowRight}
           onClick={handleLogin}
           loading={isLoading}
-        />
+        >
+          Sign in to Dashboard
+        </GButton>
       </div>
 
       {/* Right Panel Footer */}

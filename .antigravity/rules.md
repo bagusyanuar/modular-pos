@@ -33,6 +33,7 @@ Bantu aku membangun aplikasi **POS (Point Of Sales)** berkonsep monorepo. Gunaka
 - **Component Naming**: PascalCase (e.g., `UserProfileCard.tsx`)
 - **File Structure**: `src/components/`, `src/pages/`, `src/services/`
 - **Props**: Selalu definisikan interface props dengan jelas.
+- **Routing Strategy**: Wajib mendefinisikan URL path dalam file `src/routes/paths.ts` menggunakan konstanta (misal: `APP_PATHS`) sebelum digunakan di `AppRouter.tsx`. Hindari penggunaan *hardcoded string* untuk rute.
 - **Error Handling**: Gunakan `try-catch` dan tampilkan error via Toast/Snackbar.
 
 ## 🚀 Workflow
