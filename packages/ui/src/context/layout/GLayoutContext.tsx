@@ -13,15 +13,15 @@ export const GLayoutProvider: React.FC<{ children: ReactNode; defaultCollapsed?:
   children,
   defaultCollapsed = false,
 }) => {
-  const isLg = useBreakpoint('lg');
+  const isDesktop = useBreakpoint('lg');
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
   // Auto-collapse when screen size is less than LG (1024px)
   useEffect(() => {
-    if (!isLg) {
+    if (!isDesktop) {
       setCollapsed(true);
     }
-  }, [isLg]);
+  }, [isDesktop]);
 
   const toggleSidebar = useCallback(() => {
     setCollapsed((prev) => !prev);

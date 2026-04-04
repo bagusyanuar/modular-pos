@@ -1,7 +1,18 @@
 import { cva } from 'class-variance-authority';
 
 export const contentContainerVariants = cva(
-  'min-h-screen bg-transparent flex flex-col pt-16 transition-all duration-300 ease-in-out'
+  'min-h-screen bg-transparent flex flex-col pt-16 transition-all duration-300 ease-in-out',
+  {
+    variants: {
+      collapsed: {
+        true: 'pl-0 lg:pl-20',
+        false: 'pl-0 lg:pl-64',
+      },
+    },
+    defaultVariants: {
+      collapsed: false,
+    },
+  }
 );
 
 export const innerContentVariants = cva(
