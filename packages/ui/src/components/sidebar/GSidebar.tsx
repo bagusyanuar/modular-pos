@@ -83,7 +83,7 @@ const GSidebar: React.FC<GSidebarProps> = ({
           <button
             onClick={onToggle}
             className={cn(
-              "absolute -right-3 top-7 w-6 h-6 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:text-orange-500 hover:border-orange-200 transition-all shadow-sm z-10",
+              "absolute -right-3 top-7 w-6 h-6 bg-white border border-gray-100 rounded-full hidden md:flex items-center justify-center text-gray-400 hover:text-orange-500 hover:border-orange-200 transition-all shadow-sm z-10",
               collapsed && "rotate-180"
             )}
           >

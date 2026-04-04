@@ -5,8 +5,8 @@ export const navbarVariants = cva(
   {
     variants: {
       collapsed: {
-        true: 'left-20',
-        false: 'left-64',
+        true: 'left-0 lg:left-20',
+        false: 'left-0 lg:left-64',
       },
     },
     defaultVariants: {
