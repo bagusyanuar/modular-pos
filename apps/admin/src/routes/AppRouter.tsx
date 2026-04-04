@@ -9,7 +9,10 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: APP_PATHS.DASHBOARD,
-        element: <div />, // Placeholder untuk sementara
+        lazy: async () => {
+          const { DashboardPage } = await import('@genpos/dashboard/pages');
+          return { Component: DashboardPage };
+        },
       },
     ],
   },

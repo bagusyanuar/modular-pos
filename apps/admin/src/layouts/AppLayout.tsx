@@ -27,58 +27,57 @@ const AppLayout: React.FC = () => {
 
   useEffect(() => {
     const handleAuth = async () => {
-      // 1. Ambil data dari SHARED COOKIE (.genpos.test)
-      const token = cookieStorage.get<string>('access_token');
-      
-      if (token) {
-        try {
-          const decodedData = JSON.parse(atob(token)) as UserData;
-          setUser(decodedData);
-          return;
-        } catch (error) {
-          console.error('Gagal decode dummy JWT:', error);
-        }
-      }
-
-      // 2. Jika tidak ada token, cek apakah ada 'code' di URL (Callback dari Auth)
-      const authCode = searchParams.get('code');
-      if (authCode) {
-        // Ambil verifier dari sessionStorage (PKCE)
-        const verifier = sessionStorage.getItem('code_verifier');
+      try {
+        // 1. Ambil data dari SHARED COOKIE (.genpos.test)
+        const token = cookieStorage.get<string>('access_token');
         
-        if (verifier) {
-          console.log('PKCE Handshake: Menukarkan code dengan token...', { authCode, verifier });
-          
-          // SIMULASI EXCHANGE (Di aslinya panggil API /token bawa code + verifier)
-          const dummyPayload: UserData = {
-            identifier: 'admin_pos',
-            role: 'ADMIN',
-            iat: Math.floor(Date.now() / 1000),
-            exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
-          };
-          const dummyJwt = btoa(JSON.stringify(dummyPayload));
-          
-          cookieStorage.set('access_token', dummyJwt);
-          setUser(dummyPayload);
-          
-          // Bersihkan URL
-          searchParams.delete('code');
-          setSearchParams(searchParams, { replace: true });
-          sessionStorage.removeItem('code_verifier');
-          return;
+        if (token) {
+          try {
+            const decodedData = JSON.parse(atob(token)) as UserData;
+            setUser(decodedData);
+            return;
+          } catch (error) {
+            console.error('Gagal decode dummy JWT:', error);
+          }
         }
-      }
 
-      // 3. Jika benar-benar tidak login, INisiasi PKCE FLOW
-      const verifier = generateCodeVerifier();
-      const challenge = await generateCodeChallenge(verifier);
-      
-      // Simpan verifier di session storage (penting!)
-      sessionStorage.setItem('code_verifier', verifier);
-      
-      // Redirect ke Auth server dengan challenge
-      const authUrl = import.meta.env.VITE_AUTH_URL || 'http://auth.genpos.test:3000';
-      window.location.href = `${authUrl}?code_challenge=${challenge}`;
+        // 2. Jika tidak ada token, cek apakah ada 'code' di URL (Callback dari Auth)
+        const authCode = searchParams.get('code');
+        if (authCode) {
+          const verifier = sessionStorage.getItem('code_verifier');
+          
+          if (verifier) {
+            console.log('PKCE Handshake: Menukarkan code dengan token...', { authCode, verifier });
+            
+            const dummyPayload: UserData = {
+              identifier: 'admin_pos',
+              role: 'ADMIN',
+              iat: Math.floor(Date.now() / 1000),
+              exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
+            };
+            const dummyJwt = btoa(JSON.stringify(dummyPayload));
+            
+            cookieStorage.set('access_token', dummyJwt);
+            setUser(dummyPayload);
+            
+            searchParams.delete('code');
+            setSearchParams(searchParams, { replace: true });
+            sessionStorage.removeItem('code_verifier');
+            return;
+          }
+        }
+
+        // 3. Jika benar-benar tidak login, INisiasi PKCE FLOW
+        const verifier = generateCodeVerifier();
+        const challenge = await generateCodeChallenge(verifier);
+        
+        sessionStorage.setItem('code_verifier', verifier);
+        
+        const authUrl = import.meta.env.VITE_AUTH_URL || 'http://auth.genpos.test:3000';
+        window.location.href = `${authUrl}?code_challenge=${challenge}`;
+      } catch (error) {
+        console.error('❌ Authentication PKCE Error:', error);
+      }
     };
 
     handleAuth();

@@ -10,6 +10,9 @@ Base color: **`orange-500`** (Primary). Prefix all components with `G`.
 - **GPopover**: Radix UI floating menu/positioning.
 - **GDialog**: Glassmorphism modal. Components: `Header`, `Footer`, `Title`, `Description`.
 - **GBadge**: Status pill (success, error, warning, info).
+- **GStatCard**: Premium statistics widget with icons, trends, and animations.
+- **GCard**: Compound card component for consistent containers. Headers, Content, Footers.
+- **GChart**: Recharts wrapper for premium data visualization with GenPOS gradients.
 
 ### 📝 Form Inputs
 

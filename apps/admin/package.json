@@ -17,7 +17,8 @@
     "react-router-dom": "^7.13.1",
     "tailwindcss": "^4.2.2",
     "@genpos/ui": "workspace:*",
-    "@genpos/utils": "workspace:*"
+    "@genpos/utils": "workspace:*",
+    "@genpos/dashboard": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
