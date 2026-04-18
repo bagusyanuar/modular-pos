@@ -1,0 +1,35 @@
+{
+  "name": "@genrs/infrastructure",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./utils/*": "./src/utils/*",
+    "./modules/*": "./src/modules/*"
+  },
+  "typesVersions": {
+    "*": {
+      "utils/*": [
+        "./src/utils/*/index.ts",
+        "./src/utils/*.ts",
+        "./src/utils/*"
+      ],
+      "modules/*": [
+        "./src/modules/*/index.ts",
+        "./src/modules/*.ts",
+        "./src/modules/*"
+      ]
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genpos/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.0",
+    "typescript": "~5.9.3"
+  }
+}

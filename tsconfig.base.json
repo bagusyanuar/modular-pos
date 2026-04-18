@@ -15,7 +15,8 @@
       "@genpos/ui/*": ["./packages/ui/src/components/*/index.ts"],
       "@genpos/ui/context/*": ["./packages/ui/src/context/*/index.ts"],
       "@genpos/ui/icons": ["./packages/ui/src/icons/index.ts"],
-      "@genpos/core": ["./packages/core/src/index.ts"],
+      "@genpos/core/*": ["./features/core/src/*"],
+      "@genpos/infrastructure/*": ["./features/infrastructure/src/*"],
       "@genpos/api": ["./packages/api/src/index.ts"]
     }
   }
