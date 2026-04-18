@@ -22,8 +22,11 @@ export interface ApiResponse<T = unknown> {
  * Struktur error dari backend.
  */
 export interface ApiErrorData {
-  code: string;
-  message: string;
+  meta: {
+    code: string;
+    status: string;
+    message: string;
+  };
   fields?: Record<string, string>;
 }
 
@@ -34,6 +37,13 @@ export interface HttpClientConfig {
   timeout?: number;
   onUnauthorized?: () => void;
   tokenGetter?: TokenGetter;
+  refreshPath?: string;
 }
 
 export type AxiosErrorWithData = AxiosError<ApiErrorData>;
+
+declare module 'axios' {
+  export interface InternalAxiosRequestConfig {
+    _retry?: boolean;
+  }
+}

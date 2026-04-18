@@ -7,15 +7,18 @@ export class HttpClient {
   private instance: AxiosInstance;
   private tokenGetter: TokenGetter = () => null;
   private onUnauthorized: () => void = () => {};
+  private refreshPath?: string;
 
   constructor(config: HttpClientConfig) {
     this.instance = axios.create({
       baseURL: config.baseURL,
       timeout: config.timeout || 30000,
+      withCredentials: true,
     });
 
     this.tokenGetter = config.tokenGetter || (() => null);
     this.onUnauthorized = config.onUnauthorized || (() => {});
+    this.refreshPath = config.refreshPath;
 
     this.setupInterceptors();
   }
@@ -24,7 +27,10 @@ export class HttpClient {
     this.instance.interceptors.request.use(createRequestInterceptor(this.tokenGetter));
     this.instance.interceptors.response.use(
       successResponseInterceptor,
-      errorResponseInterceptor(this.onUnauthorized)
+      errorResponseInterceptor(this.instance, {
+        onUnauthorized: this.onUnauthorized,
+        refreshPath: this.refreshPath,
+      })
     );
   }
 
