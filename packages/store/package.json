@@ -1,0 +1,35 @@
+{
+  "name": "@genpos/store",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./zustand": "./src/zustand/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "zustand": [
+        "./src/zustand/index.ts"
+      ],
+      "*": [
+        "./src/*.ts",
+        "./src/*/index.ts"
+      ]
+    }
+  },
+  "dependencies": {
+    "zustand": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.2.4"
+  },
+  "devDependencies": {
+    "@genpos/core": "workspace:*",
+    "@types/react": "^19.2.14",
+    "typescript": "~5.9.3"
+  }
+}
