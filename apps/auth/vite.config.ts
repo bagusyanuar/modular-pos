@@ -1,15 +1,18 @@
 import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '../../', '');
 
   return {
+    base: '/sso',
     envDir: '../../',
     plugins: [
+      tanstackRouter(),
       react(),
       tailwindcss(),
       visualizer({
@@ -24,7 +27,7 @@ export default defineConfig(({ mode }) => {
       dedupe: ['react', 'react-dom', '@tanstack/react-router'],
     },
     server: {
-      host: 'auth.genpos.test',
+      host: env.VITE_AUTH_HOST || 'genpos.test',
       port: Number(env.VITE_PORT_AUTH) || 3000,
       open: true,
       watch: {
