@@ -1,6 +1,5 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 import { HttpClientConfig, TokenGetter } from './types';
-import { createRequestInterceptor } from './interceptors/request';
 import { successResponseInterceptor, errorResponseInterceptor } from './interceptors/response';
 
 export class HttpClient {
@@ -24,13 +23,24 @@ export class HttpClient {
   }
 
   private setupInterceptors() {
-    this.instance.interceptors.request.use(createRequestInterceptor(this.tokenGetter));
+    // Kita bungkus dalam anonymous function supaya dia selalu ambil 
+    // referensi terbaru dari properti class (Dependency Injection)
+    this.instance.interceptors.request.use(async (config) => {
+      const token = await this.tokenGetter();
+      if (token && config.headers) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      config.headers['Content-Type'] = 'application/json';
+      config.headers.Accept = 'application/json';
+      return config;
+    });
+
     this.instance.interceptors.response.use(
       successResponseInterceptor,
-      errorResponseInterceptor(this.instance, {
-        onUnauthorized: this.onUnauthorized,
+      (error) => errorResponseInterceptor(this.instance, {
+        onUnauthorized: () => this.onUnauthorized(),
         refreshPath: this.refreshPath,
-      })
+      })(error)
     );
   }
 
@@ -47,6 +57,43 @@ export class HttpClient {
    */
   public setOnUnauthorized(fn: () => void) {
     this.onUnauthorized = fn;
+  }
+
+  // --- Direct API Methods (Delegators) ---
+
+  /**
+   * Metode paling fleksibel, sama seperti calls axios(config)
+   */
+  public request<T = unknown>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.request<T>(config);
+  }
+
+  public get<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.get<T>(url, config);
+  }
+
+  public post<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.post<T>(url, data, config);
+  }
+
+  public put<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.put<T>(url, data, config);
+  }
+
+  public patch<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.patch<T>(url, data, config);
+  }
+
+  public delete<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.delete<T>(url, config);
+  }
+
+  public head<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.head<T>(url, config);
+  }
+
+  public options<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.instance.options<T>(url, config);
   }
 
   public getInstance(): AxiosInstance {
