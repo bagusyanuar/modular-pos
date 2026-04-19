@@ -91,5 +91,19 @@ Layer yang mengorkestrasikan alur kerja aplikasi (Koki).
 3. **Scalable**: Menambah modul baru hanya perlu mendaftarkannya ke Registry tanpa merusak modul lain.
 4. **Maintainable**: Pemisahan tegas antara "Apa yang dilakukan" (Core) dan "Gimana cara ngelakuinnya" (Infra).
 
+## 8. Otomatisasi: Scaffolding Core Module
+
+Untuk menjaga konsistensi struktur folder di seluruh modul Core, gunakan script otomatisasi berikut:
+
+```bash
+pnpm create:core:module <nama-modul>
+```
+
+### Fitur Script Scaffolding:
+- **Consistent Layout**: Otomatis membuat folder `application` (dtos, usecases, ports) dan `domain` (models, repositories, values).
+- **Barrel Exports**: Otomatis membuat file `index.ts` di setiap level folder untuk mendukung *Shallow Import*.
+- **Git Ready**: Menambahkan file `.gitkeep` di folder kosong agar struktur folder tetap terlacak di Git.
+- **Safety First**: Script tidak akan menimpa (overwrite) file atau folder yang sudah ada jika lo sudah melakukan modifikasi manual.
+
 ---
-*Terakhir diupdate: 19 April 2026*
+*Terakhir diupdate: 20 April 2026*

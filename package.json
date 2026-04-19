@@ -19,7 +19,8 @@
     "lint:root": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "create:module": "node scripts/create-module.mjs"
+    "create:module": "node scripts/create-module.mjs",
+    "create:core:module": "node scripts/create-core-module.mjs"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +36,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "turbo": "^2.8.17",
     "typescript": "^5.4.0",
     "typescript-eslint": "^8.57.1"

@@ -1,6 +1,6 @@
-import { AuthRepository } from './auth.repository';
-import { LoginForm } from './auth.input';
-import { LoginModel } from './auth.model';
+import { AuthRepository } from '../../domain/repositories/auth.repository';
+import { LoginForm } from '../dtos/auth.input';
+import { LoginModel } from '../../domain/models/auth.model';
 
 export class Login {
   constructor(private readonly authRepository: AuthRepository) {}
