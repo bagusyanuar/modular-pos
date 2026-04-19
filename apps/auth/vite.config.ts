@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     resolve: {
-      dedupe: ['react', 'react-dom', 'react-router-dom'],
+      dedupe: ['react', 'react-dom', '@tanstack/react-router'],
     },
     server: {
       host: 'auth.genpos.test',
