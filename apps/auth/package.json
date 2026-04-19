@@ -16,7 +16,8 @@
     "react-dom": "^19.2.4",
     "@tanstack/react-router": "^1.32.14",
     "tailwindcss": "^4.2.2",
-    "@genpos/auth-client": "workspace:*"
+    "@genpos/auth-client": "workspace:*",
+    "@genpos/presentation": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

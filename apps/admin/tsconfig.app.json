@@ -14,7 +14,7 @@
       "@genpos/ui/context/*": ["../../packages/ui/src/context/*/index.ts"],
       "@genpos/ui/icons": ["../../packages/ui/src/icons/index.ts"],
       "@genpos/auth/*": ["../../packages/auth/src/presentation/*/index.ts"],
-      "@genpos/dashboard/*": ["../../modules/dashboard/src/presentation/*/index.ts"]
+      "@genpos/presentation/*": ["../../features/presentation/src/*"]
     },
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
