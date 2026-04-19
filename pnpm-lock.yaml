@@ -251,6 +251,9 @@ importers:
       '@genpos/core':
         specifier: workspace:*
         version: link:../core
+      '@genpos/http':
+        specifier: workspace:*
+        version: link:../../packages/http
     devDependencies:
       '@types/node':
         specifier: ^24.12.0

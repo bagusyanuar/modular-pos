@@ -1,5 +1,5 @@
 {
-  "name": "@genrs/infrastructure",
+  "name": "@genpos/infrastructure",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -26,7 +26,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@genpos/core": "workspace:*"
+    "@genpos/core": "workspace:*",
+    "@genpos/http": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.12.0",

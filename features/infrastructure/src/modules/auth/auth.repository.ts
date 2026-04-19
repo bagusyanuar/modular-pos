@@ -4,12 +4,15 @@ import {
   AuthRepository,
 } from '@genpos/core/modules/auth';
 import { mapLoginFormToLoginRequest } from './auth.mapper';
+import { safeApiCall } from '@genpos/infrastructure/utils';
 
 export class AuthRepositoryImpl implements AuthRepository {
-  login(form: LoginForm): Promise<LoginModel> {
-    const request = mapLoginFormToLoginRequest(form);
-    return Promise.resolve({
-      accessToken: 'test',
+  async login(form: LoginForm): Promise<LoginModel> {
+    return safeApiCall(async () => {
+      const request = mapLoginFormToLoginRequest(form);
+      return Promise.resolve({
+        accessToken: 'test',
+      });
     });
   }
 }
