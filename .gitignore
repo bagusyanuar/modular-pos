@@ -28,4 +28,5 @@ dist-ssr
 storybook-static
 
 .env
-**/routeTree.gen.ts
+**/routeTree.gen.ts
+**/.tanstack

@@ -21,11 +21,17 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     resolve: {
-      dedupe: ['react', 'react-dom', 'react-router-dom'],
+      dedupe: ['react', 'react-dom', '@tanstack/react-router'],
     },
     server: {
-      host: 'admin.genpos.test',
+      host: env.VITE_ADMIN_HOST || 'genpos.test',
       port: Number(env.VITE_PORT_ADMIN) || 3001,
+      proxy: {
+        '/sso': {
+          target: `http://${env.VITE_AUTH_HOST || 'genpos.test'}:3000`,
+          changeOrigin: true,
+        },
+      },
       watch: {
         ignored: ['!../../modules/**', '!../../packages/**'],
       },
