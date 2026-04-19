@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => {
       port: Number(env.VITE_PORT_ADMIN) || 3001,
       proxy: {
         '/sso': {
-          target: `http://${env.VITE_AUTH_HOST || 'genpos.test'}:3000`,
+          target: `http://${env.VITE_AUTH_HOST || 'genpos.test'}:3001`,
           changeOrigin: true,
         },
       },
