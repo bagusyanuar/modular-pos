@@ -1,62 +1,17 @@
 import React from 'react';
+import Illustration from '../components/Illustration';
+import FormLogin from '../components/FormLogin';
 
 const LoginPage = () => {
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Login clicked, setting dummy cookies...');
-
-    // Simulasi set cookie dummy (berlaku 1 hari)
-    const expires = new Date(Date.now() + 86400 * 1000).toUTCString();
-    document.cookie = `accessToken=dummy_access_token; expires=${expires}; path=/`;
-    document.cookie = `refreshToken=dummy_refresh_token; expires=${expires}; path=/`;
-
-    // Redirect ke root domain (Admin App)
-    window.location.replace('/');
-  };
-
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
-      <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-orange-600">GenPOS</h1>
-          <p className="mt-2 text-gray-600">Silakan login untuk melanjutkan</p>
-        </div>
+    <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-gray-50 p-4">
+      {/* Background Ornaments for Page */}
+      <div className="absolute top-[-10%] left-[-10%] h-[40%] w-[40%] rounded-full bg-orange-100/50 blur-[120px]" />
+      <div className="absolute right-[-5%] bottom-[-5%] h-[30%] w-[30%] rounded-full bg-orange-100/30 blur-[100px]" />
 
-        <form onSubmit={handleLogin} className="mt-8 space-y-6">
-          <div className="space-y-4">
-            <div>
-              <label className="text-sm font-medium text-gray-700">Email</label>
-              <input
-                type="email"
-                defaultValue="admin@genpos.test"
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-orange-500"
-                placeholder="Masukkan email"
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                defaultValue="password123"
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-orange-500 focus:ring-orange-500"
-                placeholder="Masukkan password"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full rounded-lg bg-orange-600 px-4 py-3 font-semibold text-orange-500 transition-colors hover:bg-orange-700 active:bg-orange-800"
-          >
-            Masuk Sekarang
-          </button>
-        </form>
-
-        <div className="text-center text-sm text-gray-500">
-          <p>&copy; 2024 GenPOS Monorepo System</p>
-        </div>
+      <div className="relative z-10 grid h-130 w-3xl grid-cols-2 overflow-hidden rounded-2xl bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]">
+        <Illustration />
+        <FormLogin />
       </div>
     </div>
   );

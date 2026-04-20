@@ -3,6 +3,7 @@
 @import 'tailwindcss';
 @source "../../../modules";
 @source "../../../packages";
+@source "../../../features";
 
 @theme {
   --font-inter: 'Inter', sans-serif;
