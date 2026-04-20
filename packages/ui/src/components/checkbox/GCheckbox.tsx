@@ -1,40 +1,48 @@
 import React, { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+import type { VariantProps } from 'class-variance-authority';
+import { cn } from '../../utils';
+import {
+  checkboxVariants,
+  iconVariants,
+  labelVariants,
+} from './gcheckbox.variants';
 
-interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface GCheckboxProps
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'disabled'>,
+    VariantProps<typeof checkboxVariants> {
   label?: string;
-  disabled?: boolean;
-  isError?: boolean;
 }
 
-const GCheckbox = forwardRef<HTMLInputElement, IProps>(
-  ({ label, disabled = false, isError = false, ...props }, ref) => {
+const GCheckbox = forwardRef<HTMLInputElement, GCheckboxProps>(
+  ({ className, label, size, disabled, isError, ...props }, ref) => {
     return (
-      <label className="inline-flex items-center gap-2 cursor-pointer relative">
+      <label
+        className={cn(
+          'relative inline-flex items-center gap-2',
+          disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+        )}
+      >
         <input
           ref={ref}
           type="checkbox"
-          className="peer absolute opacity-0 w-0 h-0"
-          disabled={disabled}
+          className="peer absolute h-0 w-0 opacity-0"
+          disabled={!!disabled}
           {...props}
         />
 
         <span
-          className={twMerge(
-            'h-5 w-5 rounded-sm border border-neutral-400 flex items-center justify-center transition peer-checked:bg-orange-500 peer-checked:border-orange-500 peer-checked:[&_svg]:opacity-100 peer-checked:[&_svg]:scale-100',
-            disabled &&
-              'border-neutral-400 bg-neutral-200 peer-[&:checked:disabled]:bg-neutral-200 peer-[&:checked:disabled]:border-neutral-400',
-            isError && 'border-red-500 peer-checked:border-red-500'
+          className={cn(
+            checkboxVariants({
+              size,
+              isError,
+              disabled,
+              className,
+            })
           )}
         >
           <svg
-            className="
-                w-3.5 h-3.5
-                text-white
-                opacity-0
-                transition-all duration-150
-                peer-checked:[&_svg]:opacity-100
-            "
+            className={cn(iconVariants({ size }))}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -47,11 +55,14 @@ const GCheckbox = forwardRef<HTMLInputElement, IProps>(
         </span>
 
         {label && (
-          <span className="text-sm text-neutral-700 select-none">{label}</span>
+          <span className={cn(labelVariants({ size, disabled }))}>{label}</span>
         )}
       </label>
     );
   }
 );
 
+GCheckbox.displayName = 'GCheckbox';
+
 export default GCheckbox;
+export { GCheckbox };

@@ -21,6 +21,7 @@ Base color: **`orange-500`** (Primary). Prefix all components with `G`.
 - **GCheckbox / GRadio**: Custom styled selection elements.
 - **GSelect / GMultiSelect**: react-select wrappers for single/multi choice.
 - **GSwitch**: Toggle with `leftLabel` / `rightLabel`.
+- **GLabel**: Standard form label with required asterisk support.
 - **GFileUpload**: Drag & drop multi-file uploader.
 
 ### 📅 Date & Time

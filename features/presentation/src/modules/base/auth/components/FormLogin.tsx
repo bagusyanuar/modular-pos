@@ -1,21 +1,28 @@
 import React from 'react';
+import { useLogin } from '../hooks/useLogin';
 import logoImg from '../../../../assets/logo.png';
+import { GButton } from '@genpos/ui/button';
+import { GTextfield } from '@genpos/ui/textfield';
+import { GPasswordfield } from '@genpos/ui/passwordfield';
+import { GCheckbox } from '@genpos/ui/checkbox';
+import { GLabel } from '@genpos/ui/label';
+import { LuMail, LuLock, LuArrowRight } from '@genpos/ui/icons';
 
 const FormLogin = () => {
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Login clicked, setting dummy cookies...');
+  const {
+    identifier,
+    setIdentifier,
+    password,
+    setPassword,
+    isLoading,
+    handleLogin,
+  } = useLogin();
 
-    // Simulasi set cookie dummy (berlaku 1 hari)
-    const expires = new Date(Date.now() + 86400 * 1000).toUTCString();
-    document.cookie = `accessToken=dummy_access_token; expires=${expires}; path=/`;
-    document.cookie = `refreshToken=dummy_refresh_token; expires=${expires}; path=/`;
-
-    // Redirect ke root domain (Admin App)
-    window.location.replace('/');
-  };
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-white p-6">
+    <form
+      onSubmit={handleLogin}
+      className="flex h-full w-full flex-col items-center justify-center gap-3 bg-white p-6"
+    >
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-1.5">
           <img src={logoImg} alt="Logo" className="h-6 w-6" />
@@ -28,13 +35,52 @@ const FormLogin = () => {
         </div>
       </div>
       <div className="flex w-full flex-1 flex-col items-center justify-center">
-        <div className="flex w-full flex-col items-center justify-center gap-1">
+        <div className="mb-5 flex w-full flex-col items-center justify-center gap-1">
           <h1 className="text-lg leading-none font-semibold text-neutral-700">
             Welcome Back
           </h1>
           <p className="text-xs leading-none font-normal text-neutral-500">
             Please enter your details to sign in
           </p>
+        </div>
+        <div className="w-full px-8">
+          <div className="mb-1.5 w-full">
+            <GLabel>Email</GLabel>
+            <GTextfield
+              prefixIcon={LuMail}
+              placeholder="Email"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              disabled={isLoading}
+            />
+          </div>
+          <div className="mb-2 w-full">
+            <GLabel>Password</GLabel>
+            <GPasswordfield
+              prefixIcon={LuLock}
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
+            />
+          </div>
+          <div className="mb-5 flex w-full items-center justify-between">
+            <GCheckbox label="Keep Me Sign In" size="sm" disabled={isLoading} />
+            <a
+              href="#"
+              className="text-xs font-semibold text-orange-500 hover:text-orange-600 hover:underline"
+            >
+              Recover Access
+            </a>
+          </div>
+          <GButton
+            className="w-full"
+            suffixIcon={LuArrowRight}
+            loading={isLoading}
+            type="submit"
+          >
+            Sign in to Dashboard
+          </GButton>
         </div>
       </div>
       <div className="mt-auto flex w-full items-center justify-between border-t border-neutral-100 pt-4">
@@ -56,7 +102,7 @@ const FormLogin = () => {
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
