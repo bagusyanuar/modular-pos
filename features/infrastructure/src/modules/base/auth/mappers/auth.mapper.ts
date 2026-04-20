@@ -1,5 +1,5 @@
-import { LoginRequest } from '@genpos/infrastructure/modules/auth';
-import { LoginForm } from '@genpos/core/modules/auth';
+import { LoginForm } from '@genpos/core/modules/base/auth';
+import { LoginRequest } from '../schemas';
 
 export const mapLoginFormToLoginRequest = (form: LoginForm): LoginRequest => {
   return {

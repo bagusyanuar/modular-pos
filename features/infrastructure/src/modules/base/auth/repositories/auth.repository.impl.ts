@@ -3,9 +3,10 @@ import {
   LoginForm,
   LoginModel,
   AuthRepository,
-} from '@genpos/core/modules/auth';
-import { mapLoginFormToLoginRequest } from './auth.mapper';
+} from '@genpos/core/modules/base/auth';
 import { safeApiCall } from '@genpos/infrastructure/utils';
+import { mapLoginFormToLoginRequest } from '../mappers';
+import { LoginResponse } from '../schemas';
 
 export class AuthRepositoryImpl implements AuthRepository {
   constructor(private readonly httpClient: HttpClient) {}
@@ -13,7 +14,7 @@ export class AuthRepositoryImpl implements AuthRepository {
   async login(form: LoginForm): Promise<LoginModel> {
     return safeApiCall(async () => {
       const request = mapLoginFormToLoginRequest(form);
-      const { data } = await this.httpClient.post<{ access_token: string }>(
+      const { data } = await this.httpClient.post<LoginResponse>(
         '/auth/login',
         request
       );

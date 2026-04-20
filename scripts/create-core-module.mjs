@@ -8,7 +8,7 @@ if (!name) {
   process.exit(1);
 }
 
-const base = join('features', 'core', 'src', 'modules', name);
+const base = join('features', 'core', 'src', 'modules', 'base', name);
 
 const folders = [
   'application/dtos',
