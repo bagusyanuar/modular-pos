@@ -1,22 +1,26 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+
+interface User {
+  id: string;
+  name: string;
+  role: string;
+}
 
 interface AuthState {
   accessToken: string | null;
-  setToken: (token: string) => void;
-  clearToken: () => void;
+  user: User | null;
+  setAuth: (token: string, user: User) => void;
+  clearAuth: () => void;
 }
 
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
-      accessToken: null,
-      setToken: (token: string) => set({ accessToken: token }),
-      clearToken: () => set({ accessToken: null }),
-    }),
-    {
-      name: 'genpos-auth-storage',
-      storage: createJSONStorage(() => localStorage),
-    }
-  )
-);
+/**
+ * Store Auth: Disimpan di memory (Zustand). 
+ * Tidak di-persist ke localStorage supaya lebih aman.
+ * Jika halaman di-refresh, accessToken akan hilang dan kita panggil Silent Refresh.
+ */
+export const useAuthStore = create<AuthState>((set) => ({
+  accessToken: null,
+  user: null,
+  setAuth: (token: string, user: User) => set({ accessToken: token, user }),
+  clearAuth: () => set({ accessToken: null, user: null }),
+}));

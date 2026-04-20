@@ -27,7 +27,6 @@ export default defineConfig(({ mode }) => {
     server: {
       host: env.VITE_AUTH_HOST || 'genpos.test',
       port: Number(env.VITE_PORT_AUTH) || 3000,
-      open: true,
       watch: {
         ignored: ['!../../modules/**', '!../../packages/**'],
       },
