@@ -54,15 +54,17 @@ export const useLogin = () => {
 
       // Delay sebentar biar user sempat baca toast
       setTimeout(() => {
+        const url = new URL(adminUrl);
+        // Pastikan path selalu ada trailing slash untuk root untuk menghindari redirect stripping params
+        if (url.pathname === '') url.pathname = '/';
+
         if (challenge) {
           // PKCE Flow: Redirect balik bawa auth_code (simulasi)
           const mockAuthCode = `code_${Math.random().toString(36).substring(7)}`;
-          // Redirect ke root Admin (karena rute dashboard belum dibuat)
-          window.location.href = `${adminUrl}/dashboard?code=${mockAuthCode}`;
-        } else {
-          // Direct Login Flow: Langsung ke root dashboard
-          window.location.href = `${adminUrl}/dashboard`;
+          url.searchParams.set('code', mockAuthCode);
         }
+
+        window.location.href = url.toString();
       }, 800);
     } catch (error) {
       console.error('Login Error:', error);
