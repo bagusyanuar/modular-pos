@@ -1,6 +1,10 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
-import { HttpClientConfig, TokenGetter } from './types';
-import { successResponseInterceptor, errorResponseInterceptor } from './interceptors/response';
+import type { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios from 'axios';
+import type { HttpClientConfig, TokenGetter } from './types';
+import {
+  successResponseInterceptor,
+  errorResponseInterceptor,
+} from './interceptors/response';
 
 export class HttpClient {
   private instance: AxiosInstance;
@@ -23,7 +27,7 @@ export class HttpClient {
   }
 
   private setupInterceptors() {
-    // Kita bungkus dalam anonymous function supaya dia selalu ambil 
+    // Kita bungkus dalam anonymous function supaya dia selalu ambil
     // referensi terbaru dari properti class (Dependency Injection)
     this.instance.interceptors.request.use(async (config) => {
       const token = await this.tokenGetter();
@@ -37,10 +41,11 @@ export class HttpClient {
 
     this.instance.interceptors.response.use(
       successResponseInterceptor,
-      (error) => errorResponseInterceptor(this.instance, {
-        onUnauthorized: () => this.onUnauthorized(),
-        refreshPath: this.refreshPath,
-      })(error)
+      (error) =>
+        errorResponseInterceptor(this.instance, {
+          onUnauthorized: () => this.onUnauthorized(),
+          refreshPath: this.refreshPath,
+        })(error)
     );
   }
 
@@ -64,35 +69,61 @@ export class HttpClient {
   /**
    * Metode paling fleksibel, sama seperti calls axios(config)
    */
-  public request<T = unknown>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public request<T = unknown>(
+    config: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.request<T>(config);
   }
 
-  public get<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public get<T = unknown>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.get<T>(url, config);
   }
 
-  public post<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public post<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.post<T>(url, data, config);
   }
 
-  public put<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public put<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.put<T>(url, data, config);
   }
 
-  public patch<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public patch<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.patch<T>(url, data, config);
   }
 
-  public delete<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public delete<T = unknown>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.delete<T>(url, config);
   }
 
-  public head<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public head<T = unknown>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.head<T>(url, config);
   }
 
-  public options<T = unknown>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public options<T = unknown>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.instance.options<T>(url, config);
   }
 

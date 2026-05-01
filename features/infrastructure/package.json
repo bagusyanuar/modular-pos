@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@genpos/core": "workspace:*",
-    "@genpos/http": "workspace:*",
+    "@genossys-erp/http": "workspace:*",
     "@genpos/store": "workspace:*"
   },
   "devDependencies": {

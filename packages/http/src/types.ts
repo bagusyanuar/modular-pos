@@ -1,22 +1,4 @@
-import { AxiosError, AxiosResponse } from 'axios';
-
-/**
- * Standar respon dari API GenPOS.
- */
-export interface ApiResponse<T = unknown> {
-  meta: {
-    code: number;
-    status: string;
-    message: string;
-    pagination?: {
-      total: number;
-      per_page: number;
-      current_page: number;
-      total_pages: number;
-    };
-  };
-  data: T;
-}
+import type { AxiosError } from 'axios';
 
 /**
  * Struktur error dari backend.
