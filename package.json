@@ -9,6 +9,7 @@
     "dev": "turbo run dev",
     "dev:auth": "turbo run dev --filter=@genpos/auth-app",
     "dev:admin": "turbo run dev --filter=@genpos/auth-app --filter=@genpos/admin",
+    "dev:erp": "turbo run dev --filter=@genossys-erp/apps",
     "storybook": "pnpm run --filter=@genpos/ui storybook",
     "build-storybook": "pnpm run --filter=@genpos/ui build-storybook",
     "build": "turbo run build",

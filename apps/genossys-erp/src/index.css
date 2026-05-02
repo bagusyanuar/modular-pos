@@ -1,0 +1,11 @@
+/* Langsung import dari UI karena di dalamnya udah ada @import "tailwindcss" */
+@import "../../../packages/ui/src/index.css";
+
+/* Source class names from modules, packages, and features for Tailwind JIT */
+@source "../../../modules";
+@source "../../../packages";
+
+@theme {
+  --color-primary: var(--color-orange-500);
+  --color-primary-hover: var(--color-orange-600);
+}

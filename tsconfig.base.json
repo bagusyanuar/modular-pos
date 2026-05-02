@@ -19,7 +19,10 @@
       "@genpos/infrastructure/*": ["./features/infrastructure/src/*"],
       "@genpos/presentation/*": ["./features/presentation/src/*"],
       "@genpos/store/*": ["./packages/store/src/*"],
-      "@genpos/api": ["./packages/api/src/index.ts"]
+      "@genpos/api": ["./packages/api/src/index.ts"],
+      "@genossys-erp/core/*": ["./modules/core/src/*"],
+      "@genossys-erp/infrastructure/*": ["./modules/infrastructure/src/*"],
+      "@genossys-erp/presentation/*": ["./modules/presentation/src/*"]
     }
   }
 }
