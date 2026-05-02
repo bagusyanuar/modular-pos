@@ -1,15 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": "../..",
     "outDir": "dist",
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vite/client"],
-    "paths": {
-      "@/*": ["./src/*"],
-      "@genossys-erp/core": ["../../modules/core/src"],
-      "@genossys-erp/infrastructure": ["../../modules/infrastructure/src"]
-    }
+    "types": ["vite/client"]
   },
   "files": ["vite.config.ts"],
   "include": ["src/**/*.ts", "src/**/*.tsx"]

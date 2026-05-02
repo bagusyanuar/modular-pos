@@ -3,20 +3,14 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), tsconfigPaths()],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@genossys-erp/core': path.resolve(__dirname, '../../modules/core/src'),
-      '@genossys-erp/infrastructure': path.resolve(
-        __dirname,
-        '../../modules/infrastructure/src'
-      ),
-    },
+    dedupe: ['react', 'react-dom'],
   },
 });
