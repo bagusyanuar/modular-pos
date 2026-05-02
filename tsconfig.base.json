@@ -22,7 +22,8 @@
       "@genpos/api": ["./packages/api/src/index.ts"],
       "@genossys-erp/core/*": ["./modules/core/src/*"],
       "@genossys-erp/infrastructure/*": ["./modules/infrastructure/src/*"],
-      "@genossys-erp/presentation/*": ["./modules/presentation/src/*"]
+      "@genossys-erp/presentation/*": ["./modules/presentation/src/*"],
+      "@genossys-erp/ui/*": ["./packages/ui/src/*"]
     }
   }
 }

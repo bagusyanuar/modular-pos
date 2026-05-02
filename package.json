@@ -41,7 +41,8 @@
     "prettier-plugin-tailwindcss": "^0.7.2",
     "turbo": "^2.8.17",
     "typescript": "^5.4.0",
-    "typescript-eslint": "^8.57.1"
+    "typescript-eslint": "^8.57.1",
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "pnpm": {
     "overrides": {
