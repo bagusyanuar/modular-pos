@@ -1,9 +1,10 @@
 import React from 'react';
-import { LuStore, LuLayoutDashboard, LuFolderArchive } from 'react-icons/lu';
+import { LuStore } from 'react-icons/lu';
 import SidebarItem from './SidebarItem';
 import SidebarTreeItem from './SidebarTreeItem';
+import type { SidebarProps } from './types';
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<SidebarProps> = ({ items, currentPath }) => {
   return (
     <aside className="fixed z-30 flex h-dvh w-64 flex-col bg-orange-500 shadow-xl">
       <div className="flex h-20 w-full items-center gap-3 px-4">
@@ -20,17 +21,49 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1 p-3">
-        <SidebarItem
-          icon={LuLayoutDashboard}
-          label="Dashboard"
-          active
-          href="#"
-        />
-        <SidebarTreeItem icon={LuFolderArchive} label="Master Data">
-          <SidebarItem label="Produk" href="#" />
-          <SidebarItem label="Kategori" href="#" />
-          <SidebarItem label="Supplier" href="#" />
-        </SidebarTreeItem>
+        {items.map((item) => {
+          const { items: subItems, id, ...itemProps } = item;
+
+          const isItemActive =
+            itemProps.active ??
+            Boolean(
+              currentPath &&
+                (itemProps.to === currentPath || itemProps.href === currentPath)
+            );
+
+          const hasActiveChild = subItems?.some(
+            (sub) =>
+              currentPath && (sub.to === currentPath || sub.href === currentPath)
+          );
+
+          if (subItems && subItems.length > 0) {
+            return (
+              <SidebarTreeItem
+                key={id}
+                icon={itemProps.icon}
+                label={itemProps.label}
+                defaultOpen={hasActiveChild}
+              >
+                {subItems.map((subItem) => {
+                  const { id: subId, ...subProps } = subItem;
+                  const isSubActive =
+                    subProps.active ??
+                    Boolean(
+                      currentPath &&
+                        (subProps.to === currentPath ||
+                          subProps.href === currentPath)
+                    );
+
+                  return (
+                    <SidebarItem key={subId} active={isSubActive} {...subProps} />
+                  );
+                })}
+              </SidebarTreeItem>
+            );
+          }
+
+          return <SidebarItem key={id} active={isItemActive} {...itemProps} />;
+        })}
       </div>
       <div className="h-24 border-t border-white/20 px-3"></div>
     </aside>
